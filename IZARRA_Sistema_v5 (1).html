@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxODAiIHkyPSIxODAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE1NjVDMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0MkE1RjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gRm9uZG8gLS0+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIHJ4PSI0MCIgZmlsbD0idXJsKCNiZykiLz4KICA8IS0tIEdvdGEgZ3JhbmRlIGNlbnRyYWRhIC0tPgogIDxwYXRoIGQ9Ik05MCAyOCBDOTAgMjgsIDQ4IDgwLCA0OCAxMDggQzQ4IDEzMiA2NyAxNTIgOTAgMTUyIEMxMTMgMTUyIDEzMiAxMzIgMTMyIDEwOCBDMTMyIDgwIDkwIDI4IDkwIDI4WiIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuOTUiLz4KICA8IS0tIEJyaWxsbyBpbnRlcmlvciBnb3RhIC0tPgogIDxwYXRoIGQ9Ik02OCAxMDIgQzY4IDg4LCA3NiA3MiwgODYgNjIiIHN0cm9rZT0icmdiYSgyMSwxMDEsMTkyLDAuMzUpIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwhLS0gTGV0cmFzIElaIGRlbnRybyBkZSBsYSBnb3RhIC0tPgogIDx0ZXh0IHg9IjkwIiB5PSIxMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjM4IiBmaWxsPSIjMTU2NUMwIiBsZXR0ZXItc3BhY2luZz0iLTEiPklaPC90ZXh0Pgo8L3N2Zz4=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="IZARRA">
+<meta name="theme-color" content="#1565C0">
+<title>IZARRA — Sistema</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --b:#0D47A1;--b2:#1565C0;--b3:#1976D2;
+  --gn:#1B5E20;--gn2:#2E7D32;
+  --rd:#B71C1C;--rd2:#C62828;
+  --w:#FFFFFF;--bg:#EEF2FA;--w2:#F5F8FF;
+  --br:#D0DCF0;--t1:#0A1628;--t2:#4A6080;--t3:#9AAFC8;
+  --yw:#F57F17;--pr:#6A1B9A;
+  --st:env(safe-area-inset-top,0px);
+  --sb:env(safe-area-inset-bottom,0px);
+  --rad:14px;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden}
+
+/* LOGIN */
+#pgLogin{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(160deg,#E3F2FD 0%,#BBDEFB 50%,#90CAF9 100%);padding:20px}
+.login-card{background:#fff;border-radius:28px;padding:40px 32px;width:100%;max-width:360px;text-align:center;box-shadow:0 20px 60px rgba(13,71,161,.25)}
+.login-logo{font-size:48px;margin-bottom:8px}
+.login-title{color:#0D47A1;font-size:28px;font-weight:800;letter-spacing:.03em;margin-bottom:4px}
+.login-sub{color:#90CAF9;font-size:13px;margin-bottom:28px}
+.login-inp{width:100%;padding:14px 16px;border:1.5px solid #BBDEFB;border-radius:12px;background:#F5F9FF;color:#0A1628;font-size:16px;outline:none;margin-bottom:12px}
+.login-inp::placeholder{color:#90CAF9}
+.login-inp:focus{border-color:#1565C0;background:#fff}
+.login-btn{width:100%;padding:15px;background:#FFB300;border:none;border-radius:12px;color:#fff;font-size:16px;font-weight:800;cursor:pointer;margin-top:4px;letter-spacing:.04em}
+.login-err{color:#C62828;font-size:13px;margin-top:8px;display:none}
+
+/* APP SHELL */
+#pgApp{display:none;flex-direction:column;min-height:100vh}
+.topbar{background:var(--b);padding:calc(var(--st)+10px) 16px 10px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(13,71,161,.3)}
+.tb-logo{color:#fff;font-size:18px;font-weight:800}
+.tb-user{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tb-sync{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;cursor:pointer}
+.tb-out{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;cursor:pointer}
+
+/* NAV TABS */
+.nav{background:var(--w);border-bottom:1px solid var(--br);padding:0 12px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;position:sticky;top:calc(var(--st)+44px);z-index:99}
+.nav::-webkit-scrollbar{display:none}
+.nav-tab{padding:10px 14px;border:none;background:none;color:var(--t2);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:all .15s}
+.nav-tab.on{color:var(--b);border-bottom-color:var(--b)}
+.nav-tab.rd.on{color:var(--rd);border-bottom-color:var(--rd)}
+.nav-tab.gn.on{color:var(--gn);border-bottom-color:var(--gn)}
+
+/* PAGES */
+.page{display:none;padding:16px;padding-bottom:calc(var(--sb)+80px)}
+.page.on{display:block}
+
+/* CARDS */
+.card{background:var(--w);border-radius:var(--rad);padding:16px;margin-bottom:12px;box-shadow:0 1px 6px rgba(13,71,161,.07)}
+.card-title{font-size:13px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+
+/* BOTONES */
+.btn{width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s}
+.btn:active{opacity:.8}
+.btn-b{background:var(--b);color:#fff}
+.btn-gn{background:var(--gn);color:#fff}
+.btn-rd{background:var(--rd);color:#fff}
+.btn-yw{background:#FFB300;color:#fff}
+.btn-sm{padding:9px 14px;font-size:13px;border-radius:9px;width:auto}
+.btn-row{display:flex;gap:8px;margin-top:10px}
+
+/* INPUTS */
+.inp-group{margin-bottom:12px}
+.inp-label{font-size:12px;font-weight:600;color:var(--t2);margin-bottom:5px;display:block}
+.inp{width:100%;padding:12px 14px;border:1.5px solid var(--br);border-radius:10px;font-size:15px;color:var(--t1);outline:none;background:var(--w)}
+.inp:focus{border-color:var(--b)}
+.inp.big{font-size:20px;font-weight:700;color:var(--rd2);background:#FFF9C4;border-color:#FFB300;text-align:center}
+.inp-ro{background:var(--bg);color:var(--b);font-weight:600}
+select.inp{-webkit-appearance:none}
+
+/* LISTAS */
+.list-item{background:var(--w);border-radius:12px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.list-item:active{background:var(--bg)}
+.list-item.done{opacity:.5}
+.li-name{font-weight:700;font-size:14px}
+.li-sub{font-size:12px;color:var(--t2);margin-top:2px}
+.li-badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px}
+.badge-x{background:#E3F2FD;color:#0D47A1}
+.badge-a{background:#FFF3CD;color:#856404}
+.badge-b{background:#D4EDDA;color:#155724}
+
+/* TABLA REMITOS */
+.rem-table{width:100%;border-collapse:collapse;font-size:13px}
+.rem-table th{background:var(--b);color:#fff;padding:8px 10px;text-align:left;font-size:12px}
+.rem-table td{padding:9px 10px;border-bottom:1px solid var(--br)}
+.rem-table tr:nth-child(even) td{background:var(--bg)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:var(--w);border-radius:12px;padding:14px;text-align:center}
+.stat-val{font-size:22px;font-weight:800;font-family:monospace}
+.stat-lbl{font-size:11px;color:var(--t2);margin-top:2px}
+.stat-b .stat-val{color:var(--b)}
+.stat-gn .stat-val{color:var(--gn)}
+.stat-rd .stat-val{color:var(--rd)}
+.stat-yw .stat-val{color:var(--yw)}
+
+/* SELECTOR DE PRODUCTO */
+.prod-row{display:flex;align-items:center;gap:8px;padding:10px;background:var(--bg);border-radius:10px;margin-bottom:8px}
+.prod-sel{flex:1;padding:8px;border:1.5px solid var(--br);border-radius:8px;font-size:14px;background:var(--w)}
+.prod-qty{display:flex;align-items:center;gap:6px}
+.qty-btn{width:32px;height:32px;border:none;border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qty-m{background:#FFCDD2;color:var(--rd)}
+.qty-p{background:#C8E6C9;color:var(--gn)}
+.qty-n{min-width:32px;text-align:center;font-weight:700;font-size:16px}
+.prod-sub{font-size:12px;color:var(--t2);font-family:monospace}
+.del-btn{width:28px;height:28px;border:none;background:#FFEBEE;color:var(--rd);border-radius:7px;font-size:14px;cursor:pointer}
+
+/* FIRMA */
+.cvs-wrap{border:1.5px solid var(--br);border-radius:10px;overflow:hidden;position:relative;background:#fff}
+canvas{display:block;width:100%;height:100px}
+.cvs-ph{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--t3);font-size:13px;pointer-events:none}
+.cvs-ph.h{display:none}
+
+/* PREVIEW REMITO */
+.prev-doc{background:var(--w);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(13,71,161,.15)}
+.prev-hdr{padding:16px;display:flex;justify-content:space-between;align-items:flex-start}
+.prev-hdr.rd{background:var(--rd)}
+.prev-hdr.gn{background:var(--gn)}
+.prev-hdr.bl{background:var(--b)}
+.prev-logo{color:#fff;font-size:20px;font-weight:800}
+.prev-sub{color:rgba(255,255,255,.7);font-size:10px}
+.prev-type{color:#fff;font-size:13px;font-weight:700;text-align:right}
+.prev-num{color:rgba(255,255,255,.8);font-size:11px;font-family:monospace}
+.prev-body{padding:14px}
+.prev-cli{background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.prev-cli-name{font-weight:700;font-size:15px}
+.prev-cli-sub{font-size:12px;color:var(--t2);margin-top:2px}
+.prev-items{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px}
+.prev-item{background:var(--bg);border-radius:8px;padding:8px;text-align:center}
+.prev-item-v{font-weight:700;font-size:15px;color:var(--b)}
+.prev-item-l{font-size:10px;color:var(--t2);margin-top:2px}
+.prev-item.tot{background:var(--b);grid-column:span 3}
+.prev-item.tot .prev-item-v{color:#fff;font-size:18px}
+.prev-item.tot .prev-item-l{color:rgba(255,255,255,.7)}
+.prev-item.rd-tot{background:var(--rd)}
+.prev-item.gn-tot{background:var(--gn)}
+
+/* CC */
+.cc-row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:10px;margin-bottom:6px;background:var(--w);border:1.5px solid var(--br)}
+.cc-name{font-weight:700;font-size:14px}
+.cc-sub{font-size:11px;color:var(--t2);margin-top:2px}
+.cc-saldo{font-family:monospace;font-weight:700;font-size:15px}
+.cc-ok{color:var(--gn)}
+.cc-debt{color:var(--rd)}
+.cc-zero{color:var(--t3)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(10,22,40,.6);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:0}
+.modal.on{display:flex}
+.modal-sheet{background:var(--w);border-radius:20px 20px 0 0;padding:20px 20px calc(var(--sb)+20px);width:100%;max-height:85vh;overflow-y:auto}
+.modal-handle{width:40px;height:4px;background:var(--br);border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:17px;font-weight:700;margin-bottom:16px}
+
+/* CIMES */
+.cimes-row{display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg);border-radius:10px;margin-bottom:8px}
+.cimes-label{flex:1;font-size:14px;font-weight:600}
+.cimes-inp{width:80px;padding:8px;border:1.5px solid var(--br);border-radius:8px;font-size:15px;text-align:center;font-weight:700}
+
+/* TOAST */
+.toast{position:fixed;bottom:calc(var(--sb)+20px);left:50%;transform:translateX(-50%) translateY(100px);background:#0A1628;color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;z-index:999;transition:transform .3s;white-space:nowrap;max-width:90vw;text-align:center}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--gn)}
+.toast.wn{background:var(--yw)}
+.toast.err{background:var(--rd)}
+
+/* CHIP FILTERS */
+.chips{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chip{padding:6px 14px;border:1.5px solid var(--br);border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;background:var(--w);color:var(--t2)}
+.chip.on{background:var(--b);border-color:var(--b);color:#fff}
+
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:12px}
+.search-inp{width:100%;padding:12px 14px 12px 40px;border:1.5px solid var(--br);border-radius:12px;font-size:15px;background:var(--w);outline:none}
+.search-inp:focus{border-color:var(--b)}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:16px}
+
+/* PERIODO SELECTOR */
+.periodo-row{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.periodo-row label{font-size:12px;font-weight:600;color:var(--t2)}
+.periodo-row input[type=date]{padding:8px 10px;border:1.5px solid var(--br);border-radius:9px;font-size:13px;color:var(--t1);outline:none;background:var(--w);flex:1;min-width:120px}
+.periodo-row input[type=date]:focus{border-color:var(--b)}
+
+/* SALDO TAG */
+.tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700}
+.tag-ok{background:#E8F5E9;color:var(--gn)}
+.tag-debe{background:#FFEBEE;color:var(--rd)}
+.tag-pend{background:#FFF3CD;color:#856404}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:40px 20px;color:var(--t3)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+
+/* VACÍO SUBIDO */
+.vac-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg);border-radius:10px;margin-bottom:8px}
+.vac-label{font-size:14px;font-weight:600}
+.vac-ctrl{display:flex;align-items:center;gap:8px}
+</style>
+
+<div id="toast" class="toast"></div>
+
+<!-- LOGIN -->
+<div id="pgLogin">
+  <div class="login-card">
+    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:24px">
+      <!-- Icono IZ con gota -->
+      <div style="width:80px;height:80px;background:linear-gradient(135deg,#1565C0,#42A5F5);border-radius:24px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:0 8px 24px rgba(13,71,161,.3)">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <!-- Letra I -->
+          <rect x="8" y="10" width="7" height="32" rx="3.5" fill="white"/>
+          <!-- Gota de agua -->
+          <path d="M28 8 C28 8, 20 19, 20 26 C20 31.5 23.5 36 28 36 C32.5 36 36 31.5 36 26 C36 19 28 8 28 8Z" fill="white"/>
+          <!-- Brillo gota -->
+          <path d="M23 24 C23 21, 25 17, 27 15" stroke="rgba(21,101,192,0.4)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div style="color:#0D47A1;font-size:30px;font-weight:800;letter-spacing:.06em;line-height:1">IZARRA</div>
+      <div style="color:#42A5F5;font-size:10px;letter-spacing:.25em;text-transform:uppercase;margin-top:5px;font-weight:600">AGUA &middot; CIMES</div>
+    </div>
+    <input class="login-inp" id="lu" type="text" placeholder="Usuario" autocomplete="off" autocapitalize="none">
+    <input class="login-inp" id="lp" type="password" placeholder="Contraseña">
+    <button class="login-btn" id="lbtn">INGRESAR</button>
+    <div class="login-err" id="lerr">Usuario o contraseña incorrectos</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="pgApp">
+  <div class="topbar">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.3)">
+        <svg width="26" height="26" viewBox="0 0 52 52" fill="none">
+          <rect x="8" y="10" width="7" height="32" rx="3.5" fill="white"/>
+          <path d="M28 8 C28 8, 20 19, 20 26 C20 31.5 23.5 36 28 36 C32.5 36 36 31.5 36 26 C36 19 28 8 28 8Z" fill="white"/>
+          <path d="M23 24 C23 21, 25 17, 27 15" stroke="rgba(13,71,161,0.5)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div style="color:#fff;font-size:19px;font-weight:800;letter-spacing:.06em;line-height:1">IZARRA</div>
+        <div style="color:rgba(255,255,255,.55);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;margin-top:2px">Agua &middot; CIMES</div>
+      </div>
+    </div>
+      <div class="tb-user" id="tbUser">—</div>
+    </div>
+    <div class="tb-right">
+      <button class="tb-sync" id="btnSync">↻ Sync</button>
+      <button class="tb-out" id="btnOut">Salir</button>
+    </div>
+  </div>
+
+  <!-- TABS NAV -->
+  <div class="nav" id="navBar">
+    <button class="nav-tab rd on" data-tab="tabEntregas">📦 Entregas</button>
+    <button class="nav-tab" data-tab="tabCC">💳 Cuenta Cte</button>
+    <button class="nav-tab gn" data-tab="tabCobros">🧾 Cobros</button>
+    <button class="nav-tab" data-tab="tabDocX">📄 Doc X</button>
+    <button class="nav-tab" data-tab="tabCIMES" id="navCIMES">🏭 CIMES</button>
+    <button class="nav-tab" data-tab="tabClientes">👥 Clientes</button>
+    <button class="nav-tab" data-tab="tabHistorial">📊 Historial</button>
+  </div>
+
+  <!-- ── TAB ENTREGAS ── -->
+  <div class="page on" id="tabEntregas">
+    <!-- Sub-nav: Lista / Formulario / Preview -->
+    <div id="subLista">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-inp" id="sbCliente" placeholder="Buscar cliente...">
+      </div>
+      <div class="stats">
+        <div class="stat stat-b"><div class="stat-val" id="stTotal">0</div><div class="stat-lbl">TOTAL CLIENTES</div></div>
+        <div class="stat stat-gn"><div class="stat-val" id="stDone">0</div><div class="stat-lbl">ENTREGADOS HOY</div></div>
+        <div class="stat stat-rd"><div class="stat-val" id="stPend">0</div><div class="stat-lbl">PENDIENTES</div></div>
+        <div class="stat stat-yw"><div class="stat-val" id="stMonto">$0</div><div class="stat-lbl">VENTA HOY</div></div>
+      </div>
+      <div id="listaClientes"></div>
+      <div id="btnCierreWrap" style="margin-top:4px">
+        <button class="btn btn-b" id="btnCierre">🔒 Cierre del día</button>
+      </div>
+    </div>
+
+    <!-- Formulario de entrega -->
+    <div id="subForm" style="display:none">
+      <div class="card" style="background:var(--rd);padding:12px 16px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="color:#fff;font-size:11px;opacity:.7">REMITO</div>
+            <div style="color:#fff;font-weight:800;font-size:16px;font-family:monospace" id="fRn">—</div>
+          </div>
+          <div style="text-align:right">
+            <div style="color:#fff;font-size:11px;opacity:.7">FECHA</div>
+            <div style="color:#fff;font-weight:600;font-size:13px" id="fFecha">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Cliente</div>
+        <div style="font-weight:800;font-size:18px" id="fNombre">—</div>
+        <div style="font-size:12px;color:var(--t2);margin-top:3px" id="fInfo">—</div>
+        <span class="tag tag-pend" id="fFC" style="margin-top:6px;display:inline-block">—</span>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Productos</div>
+        <div id="prodRows"></div>
+        <button class="btn btn-b btn-sm" id="btnAddProd" style="margin-top:6px">+ Agregar producto</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Envases vacíos subidos</div>
+        <div id="vacRows"></div>
+        <button class="btn btn-b btn-sm" id="btnAddVac" style="margin-top:6px">+ Agregar vacíos</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Observaciones (opcional)</div>
+        <textarea class="inp" id="fObs" rows="2" placeholder="Observaciones..."></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Firma del cliente</div>
+        <div class="cvs-wrap">
+          <canvas id="cvsFirma"></canvas>
+          <div class="cvs-ph" id="cvsPlh">Firmar aquí</div>
+        </div>
+        <button class="btn btn-sm" id="btnBorrarFirma" style="margin-top:8px;background:var(--bg);color:var(--t2)">🗑 Borrar firma</button>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="btn btn-sm" style="background:var(--bg);color:var(--t1);flex:1" id="btnPreview">👁 Vista previa</button>
+        <button class="btn btn-gn btn-sm" style="flex:2" id="btnConfirmar">✓ Confirmar entrega</button>
+      </div>
+      <button class="btn btn-sm" style="background:var(--bg);color:var(--t2)" id="btnVolverLista">← Volver a la lista</button>
+    </div>
+
+    <!-- Preview del remito -->
+    <div id="subPreview" style="display:none">
+      <div class="prev-doc">
+        <div class="prev-hdr rd">
+          <div><div class="prev-logo">IZARRA</div><div class="prev-sub">Distribuidor Oficial CIMES</div></div>
+          <div style="text-align:right"><div class="prev-type">REMITO</div><div class="prev-num" id="pvRn">—</div><div class="prev-num" id="pvFecha">—</div></div>
+        </div>
+        <div class="prev-body">
+          <div class="prev-cli">
+            <div class="prev-cli-name" id="pvCli">—</div>
+            <div class="prev-cli-sub" id="pvCliSub">—</div>
+          </div>
+          <div class="prev-items" id="pvItems"></div>
+          <div style="font-size:12px;color:var(--t2)" id="pvObs"></div>
+        </div>
+      </div>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn btn-sm" style="background:var(--bg);color:var(--t1);flex:1" id="btnVolverForm">← Editar</button>
+        <button class="btn btn-rd btn-sm" style="flex:2" id="btnEnviarPDF">📤 PDF + Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB CUENTA CORRIENTE ── -->
+  <div class="page" id="tabCC">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-inp" id="sbCC" placeholder="Buscar cliente en CC...">
+    </div>
+    <div class="chips" id="chipsCC">
+      <button class="chip on" data-f="todos">Todos</button>
+      <button class="chip" data-f="debe">Con deuda</button>
+      <button class="chip" data-f="dia">Al día</button>
+    </div>
+    <div id="listaCC"></div>
+  </div>
+
+  <!-- ── TAB COBROS ── -->
+  <div class="page" id="tabCobros">
+    <div class="card">
+      <div class="card-title">Registrar cobro</div>
+      <div class="inp-group">
+        <label class="inp-label">N° Cliente</label>
+        <input class="inp big" id="cobroCID" type="number" placeholder="—" oninput="onCobroCID()">
+      </div>
+      <div id="cobroClienteInfo" style="display:none">
+        <div style="font-weight:700;font-size:16px;margin-bottom:4px" id="cobroNombre">—</div>
+        <div style="font-size:13px;color:var(--t2)" id="cobroFC">—</div>
+        <div style="font-size:14px;font-weight:700;color:var(--rd);margin-top:6px" id="cobroDeuda">Saldo: —</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Período a cobrar</div>
+      <div class="periodo-row">
+        <label>Desde:</label>
+        <input type="date" id="cobroDesde">
+        <label>Hasta:</label>
+        <input type="date" id="cobroHasta">
+      </div>
+      <div id="cobroRemitos"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Pago recibido</div>
+      <div class="inp-group">
+        <label class="inp-label">Monto recibido ($)</label>
+        <input class="inp" id="cobroMonto" type="number" placeholder="0" style="font-size:20px;font-weight:700;color:var(--gn)" oninput="calcCobroSaldo()">
+      </div>
+      <div class="inp-group">
+        <label class="inp-label">Forma de pago</label>
+        <select class="inp" id="cobroForma">
+          <option>Efectivo</option>
+          <option>Transferencia</option>
+          <option>Cheque</option>
+          <option>Cuenta Corriente</option>
+        </select>
+      </div>
+      <div class="inp-group">
+        <label class="inp-label">N° transferencia (opcional)</label>
+        <input class="inp" id="cobroRef" type="text" placeholder="—">
+      </div>
+      <div id="cobroSaldoDiv" style="margin-top:8px"></div>
+    </div>
+
+    <button class="btn btn-gn" id="btnGenerarRecibo">🧾 Generar recibo PDF</button>
+    <button class="btn btn-sm" style="background:var(--bg);color:var(--t2);margin-top:8px" id="btnVerCobros">Ver historial de cobros</button>
+  </div>
+
+  <!-- ── TAB DOC X ── -->
+  <div class="page" id="tabDocX">
+    <div class="card">
+      <div class="card-title">Período</div>
+      <div class="periodo-row">
+        <label>Desde:</label>
+        <input type="date" id="dxDesde">
+        <label>Hasta:</label>
+        <input type="date" id="dxHasta">
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <select class="inp" id="dxFiltro" style="flex:1;font-size:13px" onchange="renderDocX()">
+          <option value="todos">📋 Todos</option>
+          <option value="pendiente">⏳ Solo pendientes</option>
+          <option value="pago">✅ Solo pagados</option>
+        </select>
+        <button class="btn btn-b btn-sm" id="btnFiltrarDX" style="flex:1">Aplicar</button>
+      </div>
+    </div>
+    <div id="listaDX"></div>
+  </div>
+
+  <!-- ── TAB CIMES ── -->
+  <div class="page" id="tabCIMES">
+    <div class="chips">
+      <button class="chip on" data-cimes="visita">🚚 Visita lunes</button>
+      <button class="chip" data-cimes="compra">📋 Compras</button>
+      <button class="chip" data-cimes="resumen">📊 Resumen</button>
+    </div>
+
+    <!-- Visita lunes -->
+    <div id="cimesVisita">
+      <div class="card">
+        <div class="card-title">Nueva visita a CIMES</div>
+        <div class="inp-group">
+          <label class="inp-label">Fecha de la visita</label>
+          <input class="inp" id="cimesVFecha" type="date">
+        </div>
+        <div class="inp-group">
+          <label class="inp-label">N° Remito CIMES</label>
+          <input class="inp" id="cimesVRemito" type="text" placeholder="REM-CIMES-001">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--rd)">Vacíos que llevás</div>
+        <div class="cimes-row"><span class="cimes-label">🔵 Bidón 20 lt</span><input class="cimes-inp" id="cvB20" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟠 Bidón 12 lt</span><input class="cimes-inp" id="cvB12" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟢 Bidón 12 lt BS</span><input class="cimes-inp" id="cvB12bs" type="number" value="0"></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--gn)">Llenos / Envases que retirás</div>
+        <div class="cimes-row"><span class="cimes-label">🔵 Bidón 20 lt llenos</span><input class="cimes-inp" id="crB20" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟠 Bidón 12 lt llenos</span><input class="cimes-inp" id="crB12" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟢 Bidón 12 lt BS llenos</span><input class="cimes-inp" id="crB12bs" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟣 Sifones</span><input class="cimes-inp" id="crSif" type="number" value="0"></div>
+      </div>
+      <button class="btn btn-b" id="btnGuardarVisita">💾 Guardar visita</button>
+    </div>
+
+    <!-- Compras -->
+    <div id="cimesCompra" style="display:none">
+      <div class="card">
+        <div class="card-title">Registrar remito de CIMES</div>
+        <div class="inp-group"><label class="inp-label">Fecha</label><input class="inp" id="ccFecha" type="date"></div>
+        <div class="inp-group"><label class="inp-label">N° Remito CIMES</label><input class="inp" id="ccRemito" type="text" placeholder="REM-CIMES-001"></div>
+        <div class="inp-group"><label class="inp-label">Tipo</label>
+          <select class="inp" id="ccTipo">
+            <option>Envases nuevos</option>
+            <option>Llenado</option>
+            <option>Sifones</option>
+            <option>Envases + Llenado</option>
+          </select>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Envases comprados</div>
+        <div class="cimes-row"><span class="cimes-label">🔵 Bidón 20 lt</span><input class="cimes-inp" id="ceB20" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟠 Bidón 12 lt</span><input class="cimes-inp" id="ceB12" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟢 Bidón 12 lt BS</span><input class="cimes-inp" id="ceB12bs" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟣 Sifones</span><input class="cimes-inp" id="ceSif" type="number" value="0"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Llenados</div>
+        <div class="cimes-row"><span class="cimes-label">🔵 Bidón 20 lt</span><input class="cimes-inp" id="clB20" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟠 Bidón 12 lt</span><input class="cimes-inp" id="clB12" type="number" value="0"></div>
+        <div class="cimes-row"><span class="cimes-label">🟢 Bidón 12 lt BS</span><input class="cimes-inp" id="clB12bs" type="number" value="0"></div>
+      </div>
+      <div class="card" style="background:#FFF3CD">
+        <div class="card-title">Total del remito</div>
+        <div style="font-size:24px;font-weight:800;color:var(--b);font-family:monospace" id="ccTotal">$0</div>
+      </div>
+      <button class="btn btn-b" id="btnGuardarCompra">💾 Guardar compra</button>
+    </div>
+
+    <!-- Resumen -->
+    <div id="cimesResumen" style="display:none">
+      <div id="cimesResContent"></div>
+    </div>
+  </div>
+
+  <!-- ── TAB HISTORIAL ── -->
+  <div class="page" id="tabClientes">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-inp" id="sbCli" placeholder="Buscar cliente...">
+    </div>
+    <div id="listaCliTabla"></div>
+  </div>
+
+  <div class="page" id="tabHistorial">
+    <div class="chips" id="chipsHist">
+      <button class="chip on" data-h="hoy">Hoy</button>
+      <button class="chip" data-h="semana">Semana</button>
+      <button class="chip" data-h="mes">Mes</button>
+      <button class="chip" data-h="todo">Todo</button>
+    </div>
+    <div class="stats" id="histStats"></div>
+    <div id="listaHist"></div>
+    <button class="btn btn-sm" style="background:var(--bg);color:var(--t2);margin-top:8px" id="btnExpCSV">⬇ Exportar CSV</button>
+  </div>
+</div>
+
+<!-- MODAL CIERRE -->
+<div class="modal" id="mCierre">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🔒 Cierre del día</div>
+    <div id="cierreContent"></div>
+    <div class="btn-row">
+      <button class="btn btn-sm" style="background:var(--bg);color:var(--t1)" id="btnCierreCancel">Cerrar</button>
+      <button class="btn btn-yw btn-sm" id="btnCierreWA">💬 Enviar resumen WA</button>
+      <button class="btn btn-b btn-sm" id="btnCierreCSV">⬇ CSV</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL COBROS HISTORIAL -->
+<div class="modal" id="mCobros">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📋 Historial de cobros</div>
+    <div id="cobrosContent"></div>
+    <button class="btn btn-sm" style="background:var(--bg);color:var(--t1);margin-top:8px" id="btnCerrarCobros">Cerrar</button>
+  </div>
+</div>
+
+<!-- MODAL EDITAR COBRO -->
+<div class="modal" id="mEditCobro">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✏️ Editar cobro</div>
+    <input type="hidden" id="editCobroId">
+    <input type="hidden" id="editCobroSupaId">
+    <div class="inp-group">
+      <label class="inp-label">Cliente</label>
+      <div id="editCobroNombre" style="font-weight:700;font-size:15px;padding:8px 0;color:var(--b)"></div>
+    </div>
+    <div class="inp-group">
+      <label class="inp-label">Monto ($)</label>
+      <input class="inp" id="editCobroMonto" type="number" style="font-size:20px;font-weight:700;color:var(--gn)">
+    </div>
+    <div class="inp-group">
+      <label class="inp-label">Forma de pago</label>
+      <select class="inp" id="editCobroForma">
+        <option>Efectivo</option>
+        <option>Transferencia</option>
+        <option>Cheque</option>
+        <option>Cuenta Corriente</option>
+      </select>
+    </div>
+    <div class="inp-group">
+      <label class="inp-label">N° transferencia (opcional)</label>
+      <input class="inp" id="editCobroRef" type="text" placeholder="—">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-sm" style="background:var(--bg);color:var(--t1);flex:1" id="btnCancelarEditCobro">Cancelar</button>
+      <button class="btn btn-gn btn-sm" style="flex:2" id="btnGuardarEditCobro">💾 Guardar cambios</button>
+    </div>
+  </div>
+</div>
+<script>
+
+var SURL="https://bpkkywpypoezdxkizkuc.supabase.co";
+var SKEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJwa2t5d3B5cG9lemR4a2l6a3VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyMDk5MzcsImV4cCI6MjA5NTc4NTkzN30.uCRu3l_MYfHaXX_7FCv8X9RcLApSxkupD1pFECGnRY4";
+
+// \u2500\u2500 USUARIOS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var USERS=[
+  {u:"victoria",p:"2803",name:"Victoria",rol:"admin"},
+  {u:"manuel",  p:"2308",name:"Manuel",  rol:"chofer"},
+  {u:"lucas",   p:"3009",name:"Lucas",   rol:"chofer"}
+];
+
+// \u2500\u2500 CLIENTES \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var CLIENTES=[
+  {id:1,name:"ALVAGAMA SA - EVA PERON 1700 GBA",cf:"ri",phone:"1178299290",email:"alvagamasa@hotmail.com",cuit:"30-71076875-3",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:2,name:"BANCO DE LA PROVINCIA DE BUENOS AIRES PLAZA LANUS",cf:"ex",phone:"1133648947",email:"daquilano@bpba.com.ar",cuit:"33-99924210-9",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:3,name:"BANCO PROVINCIA BUENOS AIRES - ANEXO JUDICIAL",cf:"ex",phone:"1126535710",email:"gigrecco@bpba.com.ar",cuit:"33-99924210-9",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:4,name:"BANCO PROVINCIA DE BUENOS AIRES - EL PATO",cf:"ex",phone:"1154867504",email:"vcidanez@bpba.com.ar",cuit:"33-99924210-9",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:5,name:"CARLOS MOLANES (MOLANES S.A.)",cf:"ri",phone:"1130788404",email:"administracion@molanes.com",cuit:"30-70919241-4",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:6,name:"CARRILLO MAXIMILIANO ARIEL",cf:"ri",phone:"1154506021",email:"barranusjavier@gmail.com",cuit:"20-24027487-7",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:7,name:"CHIARA BAVIO",cf:"cf",phone:"1130240095",email:"chiara.bavio@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:8,name:"FERNANDO TORRES GILIBERTI",cf:"cf",phone:"1127757849",email:"fertorresgiliberti@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:9,name:"GLORIA TATIAN",cf:"cf",phone:"1128642870",email:"tatiangloria@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:10,name:"GUSTAVO GIUDICE",cf:"cf",phone:"1150298983",email:"guslau98@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:11,name:"INSUMOS MAGNA SRL",cf:"ri",phone:"1137978561",email:"administracion@insumosmagna.com.ar",cuit:"30-70919241-4",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:12,name:"KARINA ROSSI",cf:"cf",phone:"1154686421",email:"karinagago71@hotmail.com",cuit:"",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:13,name:"LACTEOS HAITZAGUERRE",cf:"ri",phone:"2224530676",email:"lacteoshaitzaguerre@gmail.com",cuit:"20-25535098-7",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:14,name:"LILIANA ALCARAZ",cf:"cf",phone:"1141946297",email:"herylili@yahoo.com.ar",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:15,name:"LIT 58 SRL",cf:"ri",phone:"1178907192",email:"litcanning@gmail.com",cuit:"33-71678310-9",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:16,name:"MABEL NICORA",cf:"cf",phone:"1158024513",email:"mabelnicora@yahoo.com.ar",cuit:"",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:17,name:"MARIA BELEN MAIORANA (CREARTEC ARG. SRL)",cf:"ri",phone:"1166635777",email:"belen@creartec.com.ar",cuit:"30-70475018-4",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:18,name:"MARIANA DEL CAMPO",cf:"cf",phone:"1130328177",email:"marianadel2801@hotmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:19,name:"MARIANA MUSSINI",cf:"cf",phone:"1126995390",email:"marianamussini@gmail.com",cuit:"",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:20,name:"MARIANGELES VILLAMEA (MATRICERIA BUCETA SRL)",cf:"ri",phone:"1149987160",email:"mariangeles.villamea@gmail.com",cuit:"30717260372",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:21,name:"P ZUCCO Y CIA S.A.",cf:"ri",phone:"1171366676",email:"administracionee@zucco.com.ar",cuit:"30-69919055-8",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:22,name:"PABLO ARAKAKI - DELEGACION BCO PROVINCIA EL PATO",cf:"cf",phone:"1137035832",email:"comision51@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:23,name:"PULP TRAYS S.R.L. (MOLEZE)",cf:"ri",phone:"1126593333",email:"administracion@moleze.com.ar",cuit:"33-71243268-9",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:24,name:"SANTIAGO LLADO",cf:"cf",phone:"1122556015",email:"santiago_llado3@hotmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:25,name:"TECNO AGRO VIAL S.A.",cf:"ri",phone:"1157998853",email:"andrea.campos@avedis.com.ar",cuit:"30-66181642-9",p20:5500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:26,name:"TRANSEKD SA",cf:"ri",phone:"2224553646",email:"marielafonsecacya@gmail.com",cuit:"33-71886123-9",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:27,name:"VADILLO PROPIEDADES - FLORENCIA VADILLO",cf:"cf",phone:"1178971870",email:"florencia@vadillopropiedades.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:28,name:"VERONICA INES DE LA ROSA",cf:"cf",phone:"1154867504",email:"saludableyco@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:29,name:"YAMILA MATULAITIS",cf:"cf",phone:"1163735394",email:"matulaitisy@gmail.com",cuit:"",p20:9000,p12:7000,p12bs:7500,ps1:1700,ps15:1700},
+  {id:30,name:"MARIA VICTORIA OTEGUI",cf:"cf",phone:"1166339252",email:"mariavicote@hotmail.com",cuit:"",p20:7500,p12:7000,p12bs:7500,ps1:1700,ps15:1700}
+];
+
+var PNAMES=["Bid\u00F3n 20 lt","Bid\u00F3n 12 lt","Bid\u00F3n 12 lt Bajo Sodio","Sif\u00F3n 1 lt","Sif\u00F3n 1.5 lt"];
+var PKEYS= ["p20","p12","p12bs","ps1","ps15"];
+var PCOSTO= 2100; // costo llenado por bidon
+var CF_L={ri:"FC A",cf:"FC X",ex:"FC B"};
+var CF_TAG={ri:"badge-a",cf:"badge-x",ex:"badge-b"};
+
+// \u2500\u2500 ESTADO GLOBAL \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var ME=null, ents=[], cobros=[], cimesVisitas=[], cimesCompras=[];
+var remN=0, cidx=-1, prodItems=[], vacItems=[], firmaOK=false, hfilt="hoy";
+var TODAY=(function(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");})();
+
+function g(id){return document.getElementById(id);}
+function fmt(n){return "$"+Number(n).toLocaleString("es-AR");}
+function fmtShort(n){return fmt(n);}
+
+// \u2500\u2500 PERSISTENCIA LOCAL \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function saveAll(){
+  localStorage.setItem("iz_ents",JSON.stringify(ents));
+  localStorage.setItem("iz_cobros",JSON.stringify(cobros));
+  localStorage.setItem("iz_cv",JSON.stringify(cimesVisitas));
+  localStorage.setItem("iz_cc",JSON.stringify(cimesCompras));
+  localStorage.setItem("iz_rn",remN);
+  if(ME)localStorage.setItem("iz_session",JSON.stringify(ME));
+}
+function loadAll(){
+  ents=JSON.parse(localStorage.getItem("iz_ents")||"[]");
+  cobros=JSON.parse(localStorage.getItem("iz_cobros")||"[]");
+  cimesVisitas=JSON.parse(localStorage.getItem("iz_cv")||"[]");
+  cimesCompras=JSON.parse(localStorage.getItem("iz_cc")||"[]");
+  remN=parseInt(localStorage.getItem("iz_rn")||"300");
+}
+
+// \u2500\u2500 SUPABASE \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+async function supa(method,table,data,query){
+  try{
+    var url=SURL+"/rest/v1/"+table+(query||"");
+    var opts={method:method,headers:{"apikey":SKEY,"Authorization":"Bearer "+SKEY,"Content-Type":"application/json","Prefer":"return=minimal"}};
+    if(data)opts.body=JSON.stringify(data);
+    var r=await fetch(url,opts);
+    if(method==="GET"){var j=await r.json();return j;}
+    return r.ok;
+  }catch(e){console.error("supa",e);return null;}
+}
+async function supaSync(){
+  toast("Sincronizando...","");
+  try{
+    // Cargar entregas
+    var e=await supa("GET","iz_entregas","","?order=created_at.desc&limit=1000");
+    if(e&&Array.isArray(e)&&e.length){
+      var remote=e.map(function(r){return {id:r.client_id||Date.now(),fecha:r.fecha,fechaISO:r.fecha_iso,mes:r.mes,semana:r.semana,cid:r.cid,cname:r.cname,condFisc:r.cond_fisc||"",tipoFC:r.tipo_fc||"",prod:r.prod,llenos:r.llenos,vacios:r.vacios,subtotal:r.subtotal,base:r.base,iva:r.iva,total:r.total,costo:r.costo,gan:r.gan,pago:r.pago||"Cta Cte",remito:r.remito,obs:r.obs||"",chofer:r.chofer||"",anulado:r.anulado||false,vacStr:r.vac_str||""};});
+      // Combinar remotos + locales nuevos no subidos aun
+      var remRem=remote.map(function(x){return x.remito;});
+      var soloLoc=ents.filter(function(x){return remRem.indexOf(x.remito)<0;});
+      ents=remote.concat(soloLoc);
+      localStorage.setItem("iz_ents",JSON.stringify(ents));
+    }
+    var c=await supa("GET","iz_cobros","","?order=created_at.desc&limit=500");
+    if(c&&Array.isArray(c)&&c.length){
+      // Obtener IDs de cobros borrados localmente
+      var deletedKeys=JSON.parse(localStorage.getItem("iz_cobros_deleted")||"[]");
+      cobros=c.filter(function(r){return deletedKeys.indexOf(r.n_recibo)<0;})
+        .map(function(r){return {id:r.id,fecha:r.fecha,cid:parseInt(r.cid),cname:r.cname,nRecibo:r.n_recibo,monto:parseFloat(r.monto)||0,forma:r.forma||"",ref:r.ref||""};});
+      localStorage.setItem("iz_cobros",JSON.stringify(cobros));
+    }
+    toast("Sincronizado","ok");
+    renderCC();
+    renderLista();
+  }catch(e){toast("Error de conexi\u00F3n","err");}
+  renderCC();
+}
+async function supaSave(ent){
+  var row={fecha:ent.fecha,fecha_iso:ent.fechaISO,mes:ent.mes,semana:ent.semana,cid:ent.cid,cname:ent.cname,cond_fisc:ent.condFisc,tipo_fc:ent.tipoFC,prod:ent.prod,llenos:ent.llenos,vacios:ent.vacios,subtotal:ent.subtotal,base:ent.base,iva:ent.iva,total:ent.total,costo:ent.costo,gan:ent.gan,pago:ent.pago,remito:ent.remito,obs:ent.obs||"",chofer:ent.chofer||"",anulado:false,client_id:ent.id,vac_str:ent.vacStr||""};
+  await supa("POST","iz_entregas",row);
+}
+async function supaGuardarCobro(c){
+  await supa("POST","iz_cobros",{fecha:c.fecha,cid:c.cid,cname:c.cname,n_recibo:c.nRecibo,monto:c.monto,forma:c.forma,ref:c.ref||""});
+}
+
+// \u2500\u2500 LOGIN \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+window.addEventListener("load",function(){
+  loadAll();
+  var sess=localStorage.getItem("iz_session");
+  if(sess){
+    var parsed=JSON.parse(sess);
+    // Verificar que la sesi\u00F3n tiene la estructura correcta
+    if(parsed && parsed.name && parsed.rol){
+      ME=parsed;iniciarApp();return;
+    } else {
+      // Sesi\u00F3n vieja - limpiar y pedir login
+      localStorage.removeItem("iz_session");
+    }
+  }
+  g("pgLogin").style.display="flex";
+  g("lp").addEventListener("keydown",function(e){if(e.key==="Enter")doLogin();});
+});
+g("lbtn").addEventListener("click",doLogin);
+function doLogin(){
+  var u=g("lu").value.trim().toLowerCase(),p=g("lp").value.trim();
+  var found=USERS.find(function(x){return x.u===u&&x.p===p;});
+  if(!found){g("lerr").style.display="block";return;}
+  ME=found;iniciarApp();
+}
+function iniciarApp(){
+  // Auto-sync cada 60 segundos
+  setInterval(function(){
+    if(ME) supaSync();
+  }, 60000);
+  g("pgLogin").style.display="none";
+  g("pgApp").style.display="flex";
+  g("pgApp").style.flexDirection="column";
+  g("tbUser").textContent=ME.name+" ("+ME.rol+")";
+  // Ocultar CIMES para choferes
+  if(ME.rol!=="admin")g("navCIMES").style.display="none";
+  renderLista();
+  renderCC();
+  setDefaultDates();
+  supaSync();
+  initCanvas();
+}
+g("btnOut").addEventListener("click",function(){
+  if(!confirm("\u00BFSalir?"))return;
+  localStorage.removeItem("iz_session");
+  ME=null;
+  g("pgApp").style.display="none";
+  g("pgLogin").style.display="flex";
+  g("lu").value="";g("lp").value="";
+});
+
+// \u2500\u2500 NAVEGACION TABS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+document.querySelectorAll(".nav-tab").forEach(function(tab){
+  tab.addEventListener("click",function(){
+    var id=this.dataset.tab;
+    document.querySelectorAll(".nav-tab").forEach(function(t){t.classList.remove("on");});
+    document.querySelectorAll(".page").forEach(function(p){p.classList.remove("on");});
+    this.classList.add("on");
+    g(id).classList.add("on");
+    if(id==="tabCC")renderCC();
+    if(id==="tabDocX")renderDocX();
+    if(id==="tabHistorial")renderHist();
+    if(id==="tabCIMES")renderCimesResumen();
+    if(id==="tabClientes")renderTabClientes();
+  });
+});
+
+// \u2500\u2500 FECHAS POR DEFECTO \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function setDefaultDates(){
+  var y=TODAY.substr(0,4),m=TODAY.substr(5,2);
+  g("cobroDesde").value=y+"-"+m+"-01";
+  g("cobroHasta").value=TODAY;
+  g("dxDesde").value=y+"-"+m+"-01";
+  g("dxHasta").value=TODAY;
+  g("cimesVFecha").value=TODAY;
+  g("ccFecha").value=TODAY;
+}
+
+// \u2500\u2500 ENTREGAS \u2014 LISTA \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function renderLista(){
+  var q=g("sbCliente").value.trim().toLowerCase();
+  var filt=CLIENTES.filter(function(c){return !q||c.name.toLowerCase().indexOf(q)>=0||String(c.id).indexOf(q)>=0;});
+  var hoyEnts=ents.filter(function(e){return e.fechaISO===TODAY&&!e.anulado;});
+  var done=hoyEnts.map(function(e){return e.cid;});
+  var tV=hoyEnts.reduce(function(s,e){return s+e.total;},0);
+  g("stTotal").textContent=CLIENTES.length;
+  g("stDone").textContent=done.length;
+  g("stPend").textContent=CLIENTES.length-done.length;
+  g("stMonto").textContent=fmtShort(tV);
+  g("listaClientes").innerHTML=filt.map(function(c){
+    var isDone=done.indexOf(c.id)>=0;
+    var e=hoyEnts.find(function(x){return x.cid===c.id;});
+    return "<div class=\"list-item"+(isDone?" done":"")+"\" onclick=\"abrirCliente("+c.id+")\">"+
+      "<div><div class=\"li-name\">"+c.name+"</div>"+
+      "<div class=\"li-sub\">"+(e?e.prod+" \u2014 "+fmt(e.total):"Sin entrega hoy")+"</div></div>"+
+      "<span class=\"li-badge "+CF_TAG[c.cf]+"\">"+CF_L[c.cf]+"</span>"+
+      "</div>";
+  }).join("");
+}
+g("sbCliente").addEventListener("input",renderLista);
+g("btnSync").addEventListener("click",supaSync);
+
+// \u2500\u2500 ABRIR CLIENTE \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function abrirCliente(cid){
+  cidx=CLIENTES.findIndex(function(c){return c.id===cid;});
+  var c=CLIENTES[cidx];
+  remN++;saveAll();
+  g("fRn").textContent="REM-"+("0000000"+remN).slice(-8);
+  g("fFecha").textContent=new Date().toLocaleDateString("es-AR");
+  g("fNombre").textContent=c.name;
+  g("fInfo").textContent=(c.cuit?"CUIT: "+c.cuit+"\u2003":"")+(c.phone?"Tel: "+c.phone:"");
+  g("fFC").textContent=CF_L[c.cf]||"";
+  g("fFC").className="tag "+(c.cf==="ri"?"tag-pend":c.cf==="cf"?"tag-ok":"");
+  prodItems=[];vacItems=[];firmaOK=false;
+  g("fObs").value="";
+  clearFirma();
+  addProd();
+  g("subLista").style.display="none";
+  g("subForm").style.display="block";
+  g("subPreview").style.display="none";
+}
+g("btnVolverLista").addEventListener("click",function(){
+  g("subForm").style.display="none";
+  g("subLista").style.display="block";
+});
+
+// \u2500\u2500 PRODUCTOS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function renderProdRows(){
+  var c=CLIENTES[cidx],rows="";
+  prodItems.forEach(function(it,i){
+    var pr=c[PKEYS[it.pi]]||0;
+    var sub=pr*it.qty;
+    rows+="<div class=\"prod-row\">";
+    rows+="<select class=\"prod-sel\" onchange=\"chgProdSel("+i+",this.value)\">";
+    PNAMES.forEach(function(pn,pi){rows+="<option value=\""+pi+"\""+( pi===it.pi?" selected":"")+">"+pn+"</option>";});
+    rows+="</select>";
+    rows+="<div class=\"prod-qty\">";
+    rows+="<button class=\"qty-btn qty-m\" onclick=\"chgQty("+i+",-1)\">-</button>";
+    rows+="<span class=\"qty-n\">"+it.qty+"</span>";
+    rows+="<button class=\"qty-btn qty-p\" onclick=\"chgQty("+i+",1)\">+</button>";
+    rows+="</div>";
+    rows+="<div class=\"prod-sub\">"+fmt(sub)+"</div>";
+    if(prodItems.length>1)rows+="<button class=\"del-btn\" onclick=\"delProd("+i+")\">\u00D7</button>";
+    rows+="</div>";
+  });
+  g("prodRows").innerHTML=rows;
+  updTotal();
+}
+function addProd(){
+  var used=prodItems.map(function(it){return it.pi;}),next=0;
+  for(var i=0;i<PNAMES.length;i++){if(used.indexOf(i)<0){next=i;break;}}
+  prodItems.push({pi:next,qty:1});renderProdRows();
+}
+function delProd(i){prodItems.splice(i,1);renderProdRows();}
+function chgProdSel(i,v){prodItems[i].pi=parseInt(v);renderProdRows();}
+function chgQty(i,d){prodItems[i].qty=Math.max(1,prodItems[i].qty+d);renderProdRows();}
+function updTotal(){
+  var c=CLIENTES[cidx],tot=0;
+  prodItems.forEach(function(it){tot+=(c[PKEYS[it.pi]]||0)*it.qty;});
+}
+g("btnAddProd").addEventListener("click",addProd);
+
+// \u2500\u2500 VAC\u00CDOS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function renderVacRows(){
+  var rows="";
+  vacItems.forEach(function(it,i){
+    rows+="<div class=\"vac-row\">";
+    rows+="<span class=\"vac-label\">"+PNAMES[it.pi]+"</span>";
+    rows+="<div class=\"vac-ctrl\">";
+    rows+="<button class=\"qty-btn qty-m\" onclick=\"chgVac("+i+",-1)\">-</button>";
+    rows+="<span class=\"qty-n\">"+it.qty+"</span>";
+    rows+="<button class=\"qty-btn qty-p\" onclick=\"chgVac("+i+",1)\">+</button>";
+    if(vacItems.length>0)rows+="<button class=\"del-btn\" onclick=\"delVac("+i+")\">\u00D7</button>";
+    rows+="</div></div>";
+  });
+  g("vacRows").innerHTML=rows;
+}
+function addVac(){
+  var used=vacItems.map(function(it){return it.pi;}),next=0;
+  for(var i=0;i<3;i++){if(used.indexOf(i)<0){next=i;break;}}
+  vacItems.push({pi:next,qty:1});renderVacRows();
+}
+function delVac(i){vacItems.splice(i,1);renderVacRows();}
+function chgVac(i,d){vacItems[i].qty=Math.max(1,vacItems[i].qty+d);renderVacRows();}
+g("btnAddVac").addEventListener("click",addVac);
+
+// \u2500\u2500 FIRMA \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var cvs,ctx,drw=false,lx=0,ly=0;
+function initCanvas(){
+  cvs=g("cvsFirma");ctx=cvs.getContext("2d");
+  var r=cvs.parentElement.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+  cvs.width=(r.width||300)*dpr;cvs.height=100*dpr;
+  cvs.style.width=(r.width||300)+"px";cvs.style.height="100px";
+  ctx.scale(dpr,dpr);ctx.strokeStyle="#0A1628";ctx.lineWidth=2.5;ctx.lineCap="round";ctx.lineJoin="round";
+}
+function gP(e){var r=cvs.getBoundingClientRect(),s=e.touches?e.touches[0]:e;return{x:s.clientX-r.left,y:s.clientY-r.top};}
+function initFirmaEvents(){
+  cvs.addEventListener("mousedown",function(e){drw=true;var p=gP(e);lx=p.x;ly=p.y;});
+  cvs.addEventListener("mousemove",function(e){if(!drw)return;dl(gP(e));});
+  cvs.addEventListener("mouseup",function(){drw=false;});
+  cvs.addEventListener("touchstart",function(e){e.preventDefault();drw=true;var p=gP(e);lx=p.x;ly=p.y;},{passive:false});
+  cvs.addEventListener("touchmove",function(e){e.preventDefault();if(!drw)return;dl(gP(e));},{passive:false});
+  cvs.addEventListener("touchend",function(){drw=false;});
+}
+function dl(p){ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p.x,p.y);ctx.stroke();lx=p.x;ly=p.y;firmaOK=true;g("cvsPlh").classList.add("h");}
+function clearFirma(){if(cvs&&ctx){initCanvas();firmaOK=false;g("cvsPlh").classList.remove("h");}}
+g("btnBorrarFirma").addEventListener("click",clearFirma);
+window.addEventListener("load",function(){initCanvas();initFirmaEvents();});
+
+// \u2500\u2500 PREVIEW \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("btnPreview").addEventListener("click",previewRemito);
+g("btnVolverForm").addEventListener("click",function(){
+  g("subPreview").style.display="none";
+  g("subForm").style.display="block";
+});
+function calcEntrega(){
+  var c=CLIENTES[cidx],tot=0,cos=0,lltot=0,prodStr=[];
+  prodItems.forEach(function(it){
+    var pr=c[PKEYS[it.pi]]||0;tot+=pr*it.qty;lltot+=it.qty;
+    prodStr.push(it.qty+"x "+PNAMES[it.pi]);
+    if(it.pi<3)cos+=it.qty*PCOSTO;
+  });
+  var bas=c.cf==="ri"?Math.round(tot/1.21):tot;
+  var iva=c.cf==="ri"?tot-bas:0;
+  var vacTot=vacItems.reduce(function(s,it){return s+it.qty;},0);
+  var vacStr=vacItems.map(function(it){return it.qty+"x "+PNAMES[it.pi];}).join(", ");
+  return{tot:tot,cos:cos,bas:bas,iva:iva,lltot:lltot,prodStr:prodStr,vacTot:vacTot,vacStr:vacStr};
+}
+function previewRemito(){
+  if(!prodItems.length){toast("Agrega al menos un producto","wn");return;}
+  var c=CLIENTES[cidx],d=calcEntrega();
+  g("pvRn").textContent=g("fRn").textContent;
+  g("pvFecha").textContent=new Date().toLocaleDateString("es-AR");
+  g("pvCli").textContent=c.name;
+  g("pvCliSub").textContent=(c.cuit?"CUIT: "+c.cuit+"  ":"")+( c.phone?"Tel: "+c.phone:"");
+  var items="";
+  prodItems.forEach(function(it){
+    var pr=c[PKEYS[it.pi]]||0;
+    items+="<div class=\"prev-item\"><div class=\"prev-item-v\">"+it.qty+"x</div><div class=\"prev-item-l\">"+PNAMES[it.pi]+"</div></div>";
+    items+="<div class=\"prev-item\"><div class=\"prev-item-v\">"+fmt(pr)+"</div><div class=\"prev-item-l\">Precio</div></div>";
+    items+="<div class=\"prev-item\"><div class=\"prev-item-v\">"+fmt(pr*it.qty)+"</div><div class=\"prev-item-l\">Subtotal</div></div>";
+  });
+  if(d.vacTot>0)items+="<div class=\"prev-item\" style=\"grid-column:span 3\"><div class=\"prev-item-v\">"+d.vacTot+"</div><div class=\"prev-item-l\">Vacios subidos</div></div>";
+  if(c.cf==="ri"){
+    items+="<div class=\"prev-item\"><div class=\"prev-item-v\">"+fmt(d.bas)+"</div><div class=\"prev-item-l\">Base</div></div>";
+    items+="<div class=\"prev-item\"><div class=\"prev-item-v\">"+fmt(d.iva)+"</div><div class=\"prev-item-l\">IVA 21%</div></div>";
+  }
+  items+="<div class=\"prev-item rd-tot\" style=\"grid-column:span "+(c.cf==="ri"?"1":"3")+";background:var(--rd)\"><div class=\"prev-item-v\" style=\"color:#fff;font-size:18px\">"+fmt(d.tot)+"</div><div class=\"prev-item-l\" style=\"color:rgba(255,255,255,.7)\">TOTAL REMITO</div></div>";
+  g("pvItems").innerHTML=items;
+  var obs=g("fObs").value.trim();
+  g("pvObs").innerHTML=obs?"<br><b>Obs:</b> "+obs:"";
+  g("subForm").style.display="none";
+  g("subPreview").style.display="block";
+}
+
+// \u2500\u2500 CONFIRMAR ENTREGA \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("btnConfirmar").addEventListener("click",confirmarEntrega);
+function confirmarEntrega(){
+  if(!prodItems.length){toast("Agrega al menos un producto","wn");return;}
+  var c=CLIENTES[cidx],d=calcEntrega();
+  var rn=g("fRn").textContent;
+  var dt=new Date();
+  var wk=Math.ceil((((dt-new Date(dt.getFullYear(),0,1))/86400000)+new Date(dt.getFullYear(),0,1).getDay()+1)/7);
+  var ent={
+    id:Date.now(),fecha:dt.toLocaleDateString("es-AR"),fechaISO:TODAY,
+    mes:TODAY.substr(0,7),semana:"Sem "+wk,
+    cid:c.id,cname:c.name,condFisc:(c.cf==="ri"?"Responsable Inscripto":c.cf==="cf"?"Consumidor Final":"Exento"),
+    tipoFC:CF_L[c.cf]||"",prod:d.prodStr.join(" | "),
+    llenos:d.lltot,vacios:d.vacTot,vacStr:d.vacStr,
+    subtotal:d.tot,base:d.bas,iva:d.iva,total:d.tot,
+    costo:d.cos,gan:d.tot-d.cos,pago:"Cta Cte",
+    remito:rn,obs:g("fObs").value.trim(),
+    chofer:ME?ME.name:"",anulado:false
+  };
+  ents.push(ent);saveAll();
+  supaSave(ent);
+  toast("Entrega confirmada","ok");
+  g("subPreview").style.display="none";
+  g("subForm").style.display="none";
+  g("subLista").style.display="block";
+  renderLista();
+}
+
+// \u2500\u2500 PDF REMITO (ROJO) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("btnEnviarPDF").addEventListener("click",enviarRemitoPDF);
+async function generarRemitoPDF(){
+  try{
+    var c=CLIENTES[cidx],d=calcEntrega(),rn=g("fRn").textContent;
+    var J=window.jspdf.jsPDF;
+    var pdf=new J({orientation:"portrait",unit:"mm",format:"a4"});
+    var W=210,M=14,CW=W-M*2,y=M;
+    pdf.setFillColor(183,28,28);pdf.rect(0,0,W,42,"F");
+    pdf.setTextColor(255,255,255);
+    pdf.setFontSize(22);pdf.setFont("helvetica","bold");pdf.text("IZARRA",M,17);
+    pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+    pdf.text("Distribuidor Oficial CIMES - Manuel Montemu"+String.fromCharCode(241)+"o",M,24);
+    pdf.setFontSize(13);pdf.setFont("helvetica","bold");pdf.text("REMITO",W-M,14,{align:"right"});
+    pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+    pdf.text(rn,W-M,21,{align:"right"});
+    pdf.text(new Date().toLocaleDateString("es-AR"),W-M,28,{align:"right"});
+    y=50;
+    pdf.setFillColor(255,235,235);pdf.rect(M,y-5,CW,12,"F");
+    pdf.setTextColor(183,28,28);pdf.setFontSize(7);pdf.setFont("helvetica","bold");pdf.text("CLIENTE",M+2,y);
+    y+=7;pdf.setTextColor(10,22,40);pdf.setFontSize(12);pdf.setFont("helvetica","bold");pdf.text(c.name.normalize("NFD").replace(/[\u0300-\u036f]/g,""),M,y);
+    y+=6;pdf.setFontSize(8);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+    if(c.cuit)pdf.text("CUIT: "+c.cuit,M,y);
+    if(c.phone)pdf.text("Tel: "+c.phone,(c.cuit?M+65:M),y);
+    y+=12;
+    pdf.setFillColor(183,28,28);pdf.rect(M,y,CW,8,"F");
+    pdf.setTextColor(255,255,255);pdf.setFontSize(8);pdf.setFont("helvetica","bold");
+    pdf.text("Producto",M+2,y+5.5);pdf.text("Cant.",M+105,y+5.5,{align:"right"});
+    pdf.text("Precio",M+135,y+5.5,{align:"right"});pdf.text("Total",M+CW,y+5.5,{align:"right"});
+    y+=10;
+    prodItems.forEach(function(it,i){
+      var pr=c[PKEYS[it.pi]]||0,sub=pr*it.qty;
+      if(i%2===0){pdf.setFillColor(255,245,245);pdf.rect(M,y-4,CW,8,"F");}
+      pdf.setTextColor(10,22,40);pdf.setFontSize(10);pdf.setFont("helvetica","normal");
+      pdf.text(PNAMES[it.pi].normalize("NFD").replace(/[\u0300-\u036f]/g,""),M+2,y);
+      pdf.text(String(it.qty),M+105,y,{align:"right"});
+      pdf.text("$"+pr.toLocaleString("es-AR"),M+135,y,{align:"right"});
+      pdf.setFont("helvetica","bold");pdf.text("$"+sub.toLocaleString("es-AR"),M+CW,y,{align:"right"});
+      y+=9;
+    });
+    if(d.vacTot>0){y+=2;pdf.setFontSize(9);pdf.setFont("helvetica","italic");pdf.setTextColor(120,40,40);pdf.text("Vacios subidos: "+d.vacStr.normalize("NFD").replace(/[\u0300-\u036f]/g,""),M+2,y);y+=8;}
+    y+=4;pdf.setDrawColor(183,28,28);pdf.line(M,y,M+CW,y);y+=7;
+    if(c.cf==="ri"){
+      pdf.setFontSize(9);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+      pdf.text("Base imponible:",M+100,y);pdf.text("$"+d.bas.toLocaleString("es-AR"),M+CW,y,{align:"right"});y+=7;
+      pdf.text("IVA 21%:",M+100,y);pdf.text("$"+d.iva.toLocaleString("es-AR"),M+CW,y,{align:"right"});y+=7;
+    }
+    pdf.setFillColor(183,28,28);pdf.rect(M+85,y-4,CW-85,13,"F");
+    pdf.setTextColor(255,255,255);pdf.setFontSize(12);pdf.setFont("helvetica","bold");
+    pdf.text("TOTAL:",M+88,y+4);pdf.text("$"+d.tot.toLocaleString("es-AR"),M+CW,y+4,{align:"right"});
+    y+=20;
+    var obs=g("fObs").value.trim();
+    if(obs){pdf.setFontSize(8);pdf.setFont("helvetica","italic");pdf.setTextColor(74,96,128);pdf.text("Obs: "+obs,M,y);y+=10;}
+    if(firmaOK){
+      pdf.setFontSize(8);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);pdf.text("Firma:",M,y);y+=4;
+      pdf.addImage(cvs.toDataURL("image/png"),"PNG",M,y,60,20);y+=25;
+    }else{
+      pdf.setDrawColor(200,200,200);pdf.rect(M,y,60,18);
+      pdf.setFontSize(7);pdf.setTextColor(180,180,180);pdf.text("Firma",M+2,y+10);y+=22;
+    }
+    pdf.setFillColor(255,235,235);pdf.rect(0,285,W,12,"F");
+    pdf.setFontSize(7);pdf.setFont("helvetica","normal");pdf.setTextColor(120,40,40);
+    pdf.text("IZARRA - Distribuidor Oficial CIMES - Manuel Montemu"+String.fromCharCode(241)+"o - REMITO",W/2,291,{align:"center"});
+    return pdf.output("blob");
+  }catch(er){console.error(er);toast("Error PDF","err");return null;}
+}
+async function enviarRemitoPDF(){
+  if(!prodItems.length){toast("Confirma la entrega primero","wn");return;}
+  var blob=await generarRemitoPDF();if(!blob)return;
+  var rn=g("fRn").textContent;
+  var fn="REMITO_"+rn+".pdf";
+  var file=new File([blob],fn,{type:"application/pdf"});
+  var c=CLIENTES[cidx];
+  var msg=buildRemitoMsg();
+  if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({title:"Remito IZARRA "+rn,text:msg,files:[file]});
+    toast("Remito compartido","ok");return;}catch(e){}
+  }
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");a.href=url;a.download=fn;a.click();
+  URL.revokeObjectURL(url);
+  if(c.phone){
+    setTimeout(function(){
+      window.open("https://wa.me/54"+c.phone.replace(/[^0-9]/g,"")+"?text="+encodeURIComponent(msg),"_blank");
+    },800);
+  }
+  toast("PDF descargado","ok");
+}
+function buildRemitoMsg(){
+  var c=CLIENTES[cidx],d=calcEntrega(),rn=g("fRn").textContent;
+  var m="Remito IZARRA - "+rn+"\n"+new Date().toLocaleDateString("es-AR")+"\n\n"+c.name+"\n\n";
+  prodItems.forEach(function(it){m+=it.qty+"x "+PNAMES[it.pi]+": "+fmt((c[PKEYS[it.pi]]||0)*it.qty)+"\n";});
+  if(d.vacTot>0)m+="\nVacios subidos: "+d.vacStr;
+  m+="\n\nTotal: "+fmt(d.tot)+"\n\nIZARRA - Distribuidor Oficial CIMES";
+  return m;
+}
+
+// \u2500\u2500 CIERRE DEL D\u00CDA \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("btnCierre").addEventListener("click",abrirCierre);
+g("btnCierreCancel").addEventListener("click",function(){g("mCierre").classList.remove("on");});
+g("btnCierreWA").addEventListener("click",enviarCierreWA);
+g("btnCierreCSV").addEventListener("click",expCSV);
+function abrirCierre(){
+  var h=ents.filter(function(e){return e.fechaISO===TODAY&&!e.anulado;});
+  if(!h.length){toast("Sin entregas hoy");return;}
+  var tV=0,tG=0,tU=0;
+  h.forEach(function(e){tV+=e.total;tG+=e.gan;tU+=e.llenos;});
+  var html="<div class=\"stats\" style=\"margin-bottom:12px\">";
+  html+="<div class=\"stat stat-b\"><div class=\"stat-val\">"+fmtShort(tV)+"</div><div class=\"stat-lbl\">VENTA</div></div>";
+  html+="<div class=\"stat stat-gn\"><div class=\"stat-val\">"+fmtShort(tG)+"</div><div class=\"stat-lbl\">GANANCIA</div></div>";
+  html+="<div class=\"stat stat-rd\"><div class=\"stat-val\">"+tU+"</div><div class=\"stat-lbl\">UNIDADES</div></div>";
+  html+="<div class=\"stat stat-yw\"><div class=\"stat-val\">"+h.length+"</div><div class=\"stat-lbl\">ENTREGAS</div></div></div>";
+  h.forEach(function(e){
+    html+="<div style=\"background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:6px\">";
+    html+="<div style=\"display:flex;justify-content:space-between\"><b>"+e.cname+"</b><span style=\"font-family:monospace;font-weight:700;color:var(--b)\">"+fmt(e.total)+"</span></div>";
+    html+="<div style=\"font-size:12px;color:var(--t2);margin-top:2px\">"+e.prod+" \u2014 "+e.remito+"</div></div>";
+  });
+  g("cierreContent").innerHTML=html;
+  g("mCierre").classList.add("on");
+}
+function enviarCierreWA(){
+  var h=ents.filter(function(e){return e.fechaISO===TODAY&&!e.anulado;});
+  var tV=0,tG=0,tU=0;h.forEach(function(e){tV+=e.total;tG+=e.gan;tU+=e.llenos;});
+  var m="CIERRE IZARRA - "+new Date().toLocaleDateString("es-AR")+"\n\n";
+  m+="Unidades: "+tU+"  |  Venta: "+fmt(tV)+"  |  Ganancia: "+fmt(tG)+"\n\n";
+  h.forEach(function(e,i){m+=(i+1)+". "+e.cname+" - "+e.prod+" - "+fmt(e.total)+"\n";});
+  m+="\nIZARRA - Distribuidor Oficial CIMES";
+  window.open("https://wa.me/?text="+encodeURIComponent(m),"_blank");
+}
+function expCSV(){
+  var bom="\uFEFF";
+  var hd=["Fecha","Semana","Mes","N Cliente","Nombre","Cond Fiscal","Tipo FC","Producto","Llenos","Vacios","Subtotal","Base","IVA","Total","Costo","Ganancia","Forma Pago","N Remito","Obs","Chofer"];
+  var rows=ents.filter(function(e){return !e.anulado;}).map(function(e){
+    return [e.fecha,e.semana,e.mes,e.cid,'"'+e.cname+'"','"'+e.condFisc+'"',e.tipoFC,'"'+e.prod+'"',
+            e.llenos,e.vacios,e.subtotal,e.base,e.iva,e.total,e.costo,e.gan,e.pago,e.remito,'"'+(e.obs||"")+'"',e.chofer];
+  });
+  var csv=bom+[hd].concat(rows).map(function(r){return r.join(";");}).join("\n");
+  var blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");a.href=url;a.download="IZARRA_"+TODAY+".csv";a.click();
+  URL.revokeObjectURL(url);
+  toast("CSV exportado","ok");
+}
+
+// \u2500\u2500 CUENTA CORRIENTE \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var ccFiltro="todos";
+document.querySelectorAll("#chipsCC .chip").forEach(function(c){
+  c.addEventListener("click",function(){
+    document.querySelectorAll("#chipsCC .chip").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");ccFiltro=this.dataset.f;renderCC();
+  });
+});
+g("sbCC").addEventListener("input",renderCC);
+
+function getCobroCliente(cid){
+  return cobros.filter(function(c){return parseInt(c.cid)===parseInt(cid);}).reduce(function(s,c){return s+(parseFloat(c.monto)||0);},0);
+}
+function getVentaCliente(cid){
+  return ents.filter(function(e){return parseInt(e.cid)===parseInt(cid)&&!e.anulado;}).reduce(function(s,e){return s+(parseFloat(e.total)||0);},0);
+}
+function renderCC(){
+  var q=g("sbCC").value.trim().toLowerCase();
+  var list=CLIENTES.filter(function(c){
+    if(q&&c.name.toLowerCase().indexOf(q)<0)return false;
+    var venta=getVentaCliente(c.id);
+    var pagado=getCobroCliente(c.id);
+    var saldo=venta-pagado;
+    if(ccFiltro==="debe")return saldo>0&&venta>0;
+    if(ccFiltro==="dia")return saldo<=0&&venta>0;
+    return venta>0;
+  });
+  if(!list.length){
+    g("listaCC").innerHTML="<div class=\"empty\"><div class=\"empty-icon\">\u1F4B3</div><div>Sin datos en la cuenta corriente</div></div>";
+    return;
+  }
+  g("listaCC").innerHTML=list.map(function(c){
+    var venta=getVentaCliente(c.id);
+    var pagado=getCobroCliente(c.id);
+    var saldo=venta-pagado;
+    var tag=saldo<=0?"<span class=\"tag tag-ok\">Al d\u00EDa \u2714</span>":"<span class=\"tag tag-debe\">Debe "+fmt(saldo)+"</span>";
+    return "<div class=\"cc-row\">"
+      +"<div><div class=\"cc-name\">"+c.name+"</div>"
+      +"<div class=\"cc-sub\">Facturado: "+fmt(venta)+"  |  Cobrado: "+fmt(pagado)+"</div>"
+      +tag+"</div>"
+      +"<div class=\"cc-saldo "+(saldo<=0?"cc-ok":"cc-debt")+"\">"+fmt(saldo)+"</div></div>";
+  }).join("");
+}
+
+// \u2500\u2500 COBROS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("cobroDesde").addEventListener("change",renderCobroRemitos);
+g("cobroHasta").addEventListener("change",renderCobroRemitos);
+g("btnVerCobros").addEventListener("click",function(){
+  renderCobrosHistorial();
+  g("mCobros").classList.add("on");
+});
+function renderCobrosHistorial(){
+  var html=cobros.length?cobros.slice().reverse().map(function(c){
+    return "<div style=\"background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:6px\">"
+      +"<div style=\"display:flex;justify-content:space-between;align-items:flex-start\">"
+      +"<div style=\"flex:1\">"
+      +"<div style=\"font-weight:700;font-size:14px\">"+c.cname+"</div>"
+      +"<div style=\"font-size:12px;color:var(--t2);margin-top:2px\">"+c.fecha+" \u2014 "+c.nRecibo+" \u2014 "+(c.forma||"")+"</div>"
+      +(c.ref?"<div style=\"font-size:11px;color:var(--t3)\">Ref: "+c.ref+"</div>":"")
+      +"</div>"
+      +"<div style=\"text-align:right;margin-left:10px\">"
+      +"<div style=\"font-family:monospace;font-weight:700;color:var(--gn);font-size:15px\">"+fmt(c.monto)+"</div>"
+      +"<div style=\"display:flex;gap:6px;margin-top:6px;justify-content:flex-end\">"
+      +"<button onclick=\"abrirEditCobro("+c.id+")\" style=\"padding:5px 10px;background:#E3F2FD;color:var(--b);border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer\">\u270F\uFE0F Editar</button>"
+      +"<button onclick=\"eliminarCobro("+c.id+")\" style=\"padding:5px 10px;background:#FFEBEE;color:var(--rd);border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer\">\uD83D\uDDD1 Borrar</button>"
+      +"</div></div></div></div>";
+  }).join(""):"<div class=\"empty\">Sin cobros registrados</div>";
+  g("cobrosContent").innerHTML=html;
+}
+g("btnCerrarCobros").addEventListener("click",function(){g("mCobros").classList.remove("on");});
+
+// ELIMINAR COBRO — local + Supabase
+async function eliminarCobro(id){
+  if(!confirm("\u00BFEliminar este cobro? Esta acci\u00F3n no se puede deshacer."))return;
+  var c=cobros.find(function(x){return x.id===id;});
+  // Guardar en lista de borrados para que el sync no lo traiga de vuelta
+  if(c&&c.nRecibo){
+    var deleted=JSON.parse(localStorage.getItem("iz_cobros_deleted")||"[]");
+    if(deleted.indexOf(c.nRecibo)<0){deleted.push(c.nRecibo);}
+    localStorage.setItem("iz_cobros_deleted",JSON.stringify(deleted));
+    // Borrar de Supabase
+    try{
+      await supa("DELETE","iz_cobros","","?n_recibo=eq."+encodeURIComponent(c.nRecibo));
+    }catch(e){console.error("Error borrando de Supabase",e);}
+  }
+  cobros=cobros.filter(function(x){return x.id!==id;});
+  saveAll();
+  renderCobrosHistorial();
+  renderCC();
+  toast("Cobro eliminado","ok");
+}
+
+// EDITAR COBRO
+function abrirEditCobro(id){
+  var c=cobros.find(function(x){return x.id===id;});
+  if(!c)return;
+  g("editCobroId").value=id;
+  g("editCobroNombre").textContent=c.cname+" \u2014 "+c.nRecibo;
+  g("editCobroMonto").value=c.monto;
+  g("editCobroForma").value=c.forma||"Efectivo";
+  g("editCobroRef").value=c.ref||"";
+  g("mEditCobro").classList.add("on");
+}
+g("btnCancelarEditCobro").addEventListener("click",function(){g("mEditCobro").classList.remove("on");});
+g("btnGuardarEditCobro").addEventListener("click",async function(){
+  var id=parseInt(g("editCobroId").value);
+  var idx=cobros.findIndex(function(c){return c.id===id;});
+  if(idx<0)return;
+  var nuevoMonto=parseFloat(g("editCobroMonto").value)||cobros[idx].monto;
+  var nuevaForma=g("editCobroForma").value;
+  var nuevaRef=g("editCobroRef").value;
+  cobros[idx].monto=nuevoMonto;
+  cobros[idx].forma=nuevaForma;
+  cobros[idx].ref=nuevaRef;
+  // Actualizar en Supabase
+  if(cobros[idx].nRecibo){
+    try{
+      await supa("PATCH","iz_cobros",{monto:nuevoMonto,forma:nuevaForma,ref:nuevaRef},"?n_recibo=eq."+encodeURIComponent(cobros[idx].nRecibo));
+    }catch(e){console.error("Error actualizando Supabase",e);}
+  }
+  saveAll();
+  g("mEditCobro").classList.remove("on");
+  renderCobrosHistorial();
+  renderCC();
+  toast("Cobro actualizado","ok");
+});
+
+function onCobroCID(){
+  var cid=parseInt(g("cobroCID").value);
+  var c=CLIENTES.find(function(x){return x.id===cid;});
+  if(!c){g("cobroClienteInfo").style.display="none";return;}
+  g("cobroClienteInfo").style.display="block";
+  g("cobroNombre").textContent=c.name;
+  g("cobroFC").textContent=CF_L[c.cf]||"";
+  var saldo=getVentaCliente(cid)-getCobroCliente(cid);
+  g("cobroDeuda").textContent="Saldo pendiente: "+fmt(saldo);
+  renderCobroRemitos();
+}
+function renderCobroRemitos(){
+  var cid=parseInt(g("cobroCID").value);
+  if(!cid)return;
+  var desde=g("cobroDesde").value, hasta=g("cobroHasta").value;
+  var rows=ents.filter(function(e){
+    if(e.cid!==cid||e.anulado)return false;
+    return e.fechaISO>=desde&&e.fechaISO<=hasta;
+  });
+  if(!rows.length){g("cobroRemitos").innerHTML="<div style=\"color:var(--t3);font-style:italic;padding:8px\">Sin remitos en el per\u00EDodo</div>";return;}
+  var tot=rows.reduce(function(s,e){return s+e.total;},0);
+  var html=rows.map(function(e){
+    return "<div style=\"display:flex;justify-content:space-between;padding:8px 10px;border-radius:8px;background:var(--bg);margin-bottom:4px\">"
+      +"<span style=\"font-family:monospace;font-size:12px;color:var(--t3)\">"+e.remito+"</span>"
+      +"<span style=\"font-size:12px;color:var(--t2)\">"+e.fecha+"</span>"
+      +"<span style=\"font-weight:700;color:var(--b)\">"+fmt(e.total)+"</span></div>";
+  }).join("");
+  html+="<div style=\"display:flex;justify-content:space-between;padding:10px;background:var(--b);border-radius:10px;color:#fff;font-weight:700;margin-top:6px\">"
+    +"<span>TOTAL</span><span>"+fmt(tot)+"</span></div>";
+  g("cobroRemitos").innerHTML=html;
+}
+function calcCobroSaldo(){
+  var cid=parseInt(g("cobroCID").value);if(!cid)return;
+  var desde=g("cobroDesde").value,hasta=g("cobroHasta").value;
+  var rows=ents.filter(function(e){return e.cid===cid&&!e.anulado&&e.fechaISO>=desde&&e.fechaISO<=hasta;});
+  var tot=rows.reduce(function(s,e){return s+e.total;},0);
+  var rec=parseFloat(g("cobroMonto").value)||0;
+  var saldo=tot-rec;
+  var div=g("cobroSaldoDiv");
+  if(rec>0){
+    div.innerHTML=saldo<=0
+      ?"<div class=\"tag tag-ok\" style=\"padding:8px 12px;font-size:13px\">AL D\u00CDA \u2714 - Sin saldo</div>"
+      :"<div class=\"tag tag-debe\" style=\"padding:8px 12px;font-size:13px\">Saldo pendiente: "+fmt(saldo)+"</div>";
+  }else div.innerHTML="";
+}
+
+// PDF RECIBO (VERDE)
+g("btnGenerarRecibo").addEventListener("click",generarReciboPDF);
+async function generarReciboPDF(){
+  var cid=parseInt(g("cobroCID").value);
+  if(!cid){toast("Ingresa el N\u00B0 de cliente","wn");return;}
+  var c=CLIENTES.find(function(x){return x.id===cid;});
+  if(!c)return;
+  var desde=g("cobroDesde").value,hasta=g("cobroHasta").value;
+  var rows=ents.filter(function(e){return e.cid===cid&&!e.anulado&&e.fechaISO>=desde&&e.fechaISO<=hasta;});
+  if(!rows.length){toast("Sin remitos en el per\u00EDodo","wn");return;}
+  var tot=rows.reduce(function(s,e){return s+e.total;},0);
+  var rec=parseFloat(g("cobroMonto").value)||0;
+  if(!rec){toast("Ingresa el monto recibido","wn");return;}
+  var nRec="REC-"+String(cobros.length+1).padStart(5,"0");
+  // Guardar cobro
+  var cobro={id:Date.now(),fecha:new Date().toLocaleDateString("es-AR"),
+    cid:cid,cname:c.name,nRecibo:nRec,monto:rec,
+    forma:g("cobroForma").value,ref:g("cobroRef").value};
+  cobros.push(cobro);saveAll();
+  supaGuardarCobro(cobro);
+  // Generar PDF
+  try{
+    var J=window.jspdf.jsPDF;
+    var pdf=new J({orientation:"portrait",unit:"mm",format:"a4"});
+    var W=210,M=14,CW=W-M*2,y=M;
+    pdf.setFillColor(27,94,32);pdf.rect(0,0,W,42,"F");
+    pdf.setTextColor(255,255,255);
+    pdf.setFontSize(22);pdf.setFont("helvetica","bold");pdf.text("IZARRA",M,17);
+    pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+    pdf.text("Distribuidor Oficial CIMES - Manuel Montemu"+String.fromCharCode(241)+"o",M,24);
+    pdf.setFontSize(13);pdf.setFont("helvetica","bold");pdf.text("RECIBO DE PAGO",W-M,14,{align:"right"});
+    pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+    pdf.text(nRec,W-M,21,{align:"right"});
+    pdf.text(new Date().toLocaleDateString("es-AR"),W-M,28,{align:"right"});
+    y=50;
+    pdf.setFillColor(232,245,233);pdf.rect(M,y-5,CW,12,"F");
+    pdf.setTextColor(27,94,32);pdf.setFontSize(7);pdf.setFont("helvetica","bold");pdf.text("CLIENTE",M+2,y);
+    y+=7;pdf.setTextColor(10,22,40);pdf.setFontSize(12);pdf.setFont("helvetica","bold");
+    pdf.text(c.name.normalize("NFD").replace(/[\u0300-\u036f]/g,""),M,y);
+    y+=6;pdf.setFontSize(8);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+    pdf.text("Per\u00EDodo: "+desde.split("-").reverse().join("/")+" al "+hasta.split("-").reverse().join("/"),M,y);
+    y+=12;
+    pdf.setFillColor(27,94,32);pdf.rect(M,y,CW,8,"F");
+    pdf.setTextColor(255,255,255);pdf.setFontSize(8);pdf.setFont("helvetica","bold");
+    pdf.text("N Remito",M+2,y+5.5);pdf.text("Fecha",M+50,y+5.5);pdf.text("Total",M+CW,y+5.5,{align:"right"});
+    y+=10;
+    rows.forEach(function(e,i){
+      if(i%2===0){pdf.setFillColor(240,255,244);pdf.rect(M,y-4,CW,8,"F");}
+      pdf.setTextColor(10,22,40);pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+      pdf.text(e.remito,M+2,y);pdf.text(e.fecha,M+50,y);
+      pdf.setFont("helvetica","bold");pdf.text("$"+e.total.toLocaleString("es-AR"),M+CW,y,{align:"right"});
+      y+=9;
+    });
+    y+=4;pdf.setDrawColor(27,94,32);pdf.line(M,y,M+CW,y);y+=7;
+    pdf.setFillColor(27,94,32);pdf.rect(M+80,y-4,CW-80,13,"F");
+    pdf.setTextColor(255,255,255);pdf.setFontSize(12);pdf.setFont("helvetica","bold");
+    pdf.text("TOTAL:",M+83,y+4);pdf.text("$"+tot.toLocaleString("es-AR"),M+CW,y+4,{align:"right"});
+    y+=20;
+    pdf.setFontSize(10);pdf.setFont("helvetica","bold");pdf.setTextColor(27,94,32);
+    pdf.text("Monto recibido: $"+rec.toLocaleString("es-AR"),M,y);y+=8;
+    var saldo=tot-rec;
+    if(saldo<=0){
+      pdf.setFillColor(232,245,233);pdf.rect(M,y-4,CW,12,"F");
+      pdf.setTextColor(27,94,32);pdf.setFontSize(11);pdf.text("AL D\u00CDA \u2714 - Sin saldo pendiente",M+CW/2,y+3,{align:"center"});
+    }else{
+      pdf.setFillColor(255,235,238);pdf.rect(M,y-4,CW,12,"F");
+      pdf.setTextColor(183,28,28);pdf.setFontSize(11);
+      pdf.text("Saldo pendiente: $"+saldo.toLocaleString("es-AR"),M+CW/2,y+3,{align:"center"});
+    }
+    y+=20;
+    pdf.setFontSize(9);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+    pdf.text("Forma de pago: "+cobro.forma+(cobro.ref?" | Ref: "+cobro.ref:""),M,y);
+    y+=16;
+    pdf.setDrawColor(200,200,200);
+    pdf.line(M,y+15,M+55,y+15);pdf.line(M+CW-55,y+15,M+CW,y+15);
+    pdf.setFontSize(8);pdf.setTextColor(150,150,150);
+    pdf.text("Firma del cliente",M+27,y+20,{align:"center"});
+    pdf.text("IZARRA - Firma autorizada",M+CW-27,y+20,{align:"center"});
+    pdf.setFillColor(232,245,233);pdf.rect(0,285,W,12,"F");
+    pdf.setFontSize(7);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+    pdf.text("IZARRA - Distribuidor Oficial CIMES - Recibo de Pago",W/2,291,{align:"center"});
+    var blob=pdf.output("blob");
+    var fn="RECIBO_"+nRec+"_"+c.name.replace(/[^a-zA-Z0-9]/g,"_").substring(0,15)+".pdf";
+    var file=new File([blob],fn,{type:"application/pdf"});
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      try{await navigator.share({title:"Recibo IZARRA "+nRec,files:[file]});toast("Recibo compartido","ok");renderCC();return;}catch(e){}
+    }
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download=fn;a.click();
+    URL.revokeObjectURL(url);
+    toast("Recibo "+nRec+" generado","ok");
+    renderCC();
+  }catch(er){console.error(er);toast("Error PDF","err");}
+}
+
+// \u2500\u2500 DOCUMENTOS X \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("btnFiltrarDX").addEventListener("click",renderDocX);
+function renderDocX(){
+  var desde=g("dxDesde").value,hasta=g("dxHasta").value;
+  var filtro=g("dxFiltro")?g("dxFiltro").value:"todos";
+  var clxs=CLIENTES.filter(function(c){return c.cf==="cf";});
+  var html="";var conDatos=0;
+  clxs.forEach(function(c){
+    var rows=ents.filter(function(e){
+      return parseInt(e.cid)===parseInt(c.id)&&!e.anulado&&e.fechaISO>=desde&&e.fechaISO<=hasta;
+    });
+    if(!rows.length)return;
+    var tot=rows.reduce(function(s,e){return s+(parseFloat(e.total)||0);},0);
+    var pagado=getCobroCliente(c.id);
+    var saldo=tot-pagado;
+    var esPago=saldo<=0;
+    // Aplicar filtro
+    if(filtro==="pendiente"&&esPago)return;
+    if(filtro==="pago"&&!esPago)return;
+    conDatos++;
+    var estadoBadge=esPago
+      ?"<span style=\"background:#E8F5E9;color:#1B5E20;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:4px\">\u2705 PAGADO</span>"
+      :"<span style=\"background:#FFEBEE;color:#B71C1C;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:4px\">\u23F3 PENDIENTE "+fmt(saldo)+"</span>";
+    html+="<div class=\"prev-doc\" style=\"margin-bottom:12px;border:2px solid "+(esPago?"#C8E6C9":"#FFCDD2")+"\">";
+    html+="<div class=\"prev-hdr\" style=\"background:"+(esPago?"#2E7D32":"var(--b)")+"\">";
+    html+="<div><div class=\"prev-logo\">"+c.name.normalize("NFD").replace(/[\u0300-\u036f]/g,"")+"</div>";
+    html+="<div class=\"prev-sub\">FC X \u2014 "+estadoBadge+"</div></div>";
+    html+="<div style=\"text-align:right\">";
+    html+="<div class=\"prev-type\">"+fmt(tot)+"</div>";
+    html+="<div class=\"prev-num\">"+desde.split("-").reverse().join("/")+" al "+hasta.split("-").reverse().join("/")+"</div>";
+    if(pagado>0)html+="<div style=\"color:rgba(255,255,255,.8);font-size:11px;margin-top:2px\">Cobrado: "+fmt(pagado)+"</div>";
+    html+="</div></div>";
+    html+="<div class=\"prev-body\">";
+    rows.forEach(function(e){
+      html+="<div style=\"display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--br);font-size:13px\">"
+        +"<span style=\"font-family:monospace;color:var(--t3);font-size:11px\">"+e.remito+"</span>"
+        +"<span style=\"color:var(--t2);font-size:12px\">"+e.fecha+"</span>"
+        +"<span style=\"color:var(--t2);font-size:12px\">"+e.prod+"</span>"
+        +"<span style=\"font-weight:700;color:var(--b)\">"+fmt(e.total)+"</span></div>";
+    });
+    // Resumen saldo
+    html+="<div style=\"background:"+(esPago?"#E8F5E9":"#FFF3CD")+";border-radius:8px;padding:10px 12px;margin:8px 0\">";
+    html+="<div style=\"display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px\">";
+    html+="<span style=\"color:var(--t2)\">Total facturado</span><span style=\"font-weight:700\">"+fmt(tot)+"</span></div>";
+    if(pagado>0){
+      html+="<div style=\"display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px\">";
+      html+="<span style=\"color:var(--gn)\">Cobrado</span><span style=\"font-weight:700;color:var(--gn)\">- "+fmt(pagado)+"</span></div>";
+    }
+    html+="<div style=\"display:flex;justify-content:space-between;font-size:15px;font-weight:700;border-top:1px solid rgba(0,0,0,.08);padding-top:6px;margin-top:4px\">";
+    html+="<span style=\"color:"+(esPago?"var(--gn)":"var(--rd)")+"\">"+(esPago?"SALDO: AL D\u00CDA \u2714":"SALDO PENDIENTE")+"</span>";
+    html+="<span style=\"color:"+(esPago?"var(--gn)":"var(--rd))\">"+fmt(Math.max(0,saldo))+"</span></div></div>";
+    html+="<div style=\"display:flex;gap:8px\">";
+    html+="<button onclick=\"genDocXPDF("+c.id+")\" style=\"flex:2;padding:10px;background:var(--b);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer\">\uD83D\uDCC4 PDF</button>";
+    if(c.phone)html+="<button onclick=\"envDocXWA("+c.id+")\" style=\"padding:10px 14px;background:#1B5E20;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer\">\uD83D\uDCAC WA</button>";
+    html+="</div></div></div>";
+  });
+  if(!conDatos)html="<div class=\"empty\"><div class=\"empty-icon\">\uD83D\uDCC4</div><div>Sin entregas en el per\u00EDodo</div></div>";
+  g("listaDX").innerHTML=html;
+}
+
+async function genDocXPDF(cid){
+  var c=CLIENTES.find(function(x){return x.id===cid;});
+  var desde=g("dxDesde").value,hasta=g("dxHasta").value;
+  var rows=ents.filter(function(e){return e.cid===cid&&!e.anulado&&e.fechaISO>=desde&&e.fechaISO<=hasta;});
+  if(!rows.length){toast("Sin entregas","wn");return;}
+  var tot=rows.reduce(function(s,e){return s+e.total;},0);
+  try{
+    var J=window.jspdf.jsPDF;
+    var pdf=new J({orientation:"portrait",unit:"mm",format:"a4"});
+    var W=210,M=14,CW=W-M*2,y=M;
+    pdf.setFillColor(13,71,161);pdf.rect(0,0,W,42,"F");
+    pdf.setTextColor(255,255,255);
+    pdf.setFontSize(22);pdf.setFont("helvetica","bold");pdf.text("IZARRA",M,17);
+    pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+    pdf.text("Distribuidor Oficial CIMES - Manuel Montemu"+String.fromCharCode(241)+"o",M,24);
+    pdf.setFontSize(11);pdf.setFont("helvetica","bold");pdf.text("DOCUMENTO NO VALIDO COMO FACTURA",W-M,14,{align:"right"});
+    pdf.setFontSize(8);pdf.setFont("helvetica","normal");
+    pdf.text("Per\u00EDodo: "+desde.split("-").reverse().join("/")+" al "+hasta.split("-").reverse().join("/"),W-M,21,{align:"right"});
+    pdf.text(new Date().toLocaleDateString("es-AR"),W-M,28,{align:"right"});
+    y=50;
+    pdf.setFillColor(227,242,253);pdf.rect(M,y-5,CW,12,"F");
+    pdf.setTextColor(13,71,161);pdf.setFontSize(7);pdf.setFont("helvetica","bold");pdf.text("CLIENTE",M+2,y);
+    y+=7;pdf.setTextColor(10,22,40);pdf.setFontSize(13);pdf.setFont("helvetica","bold");
+    pdf.text(c.name.normalize("NFD").replace(/[\u0300-\u036f]/g,""),M,y);
+    y+=6;pdf.setFontSize(8);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+    pdf.text("Condici\u00F3n fiscal: Consumidor Final - Documento no v\u00E1lido como factura",M,y);
+    y+=12;
+    pdf.setFillColor(21,101,192);pdf.rect(M,y,CW,8,"F");
+    pdf.setTextColor(255,255,255);pdf.setFontSize(8);pdf.setFont("helvetica","bold");
+    pdf.text("N Remito",M+2,y+5.5);pdf.text("Fecha",M+50,y+5.5);pdf.text("Producto",M+75,y+5.5);pdf.text("Total",M+CW,y+5.5,{align:"right"});
+    y+=10;
+    rows.forEach(function(e,i){
+      if(i%2===0){pdf.setFillColor(245,248,255);pdf.rect(M,y-4,CW,8,"F");}
+      pdf.setTextColor(10,22,40);pdf.setFontSize(9);pdf.setFont("helvetica","normal");
+      pdf.text(e.remito,M+2,y);pdf.text(e.fecha,M+50,y);
+      var prod=e.prod.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      if(prod.length>35)prod=prod.substring(0,33)+"..";
+      pdf.text(prod,M+75,y);
+      pdf.setFont("helvetica","bold");pdf.text("$"+e.total.toLocaleString("es-AR"),M+CW,y,{align:"right"});
+      y+=9;
+    });
+    y+=4;pdf.setDrawColor(13,71,161);pdf.line(M,y,M+CW,y);y+=7;
+    pdf.setFillColor(13,71,161);pdf.rect(M+80,y-4,CW-80,14,"F");
+    pdf.setTextColor(255,255,255);pdf.setFontSize(13);pdf.setFont("helvetica","bold");
+    pdf.text("TOTAL A COBRAR:",M+83,y+5);pdf.text("$"+tot.toLocaleString("es-AR"),M+CW,y+5,{align:"right"});
+    y+=22;
+    pdf.setFontSize(8);pdf.setFont("helvetica","italic");pdf.setTextColor(154,175,200);
+    pdf.text("Este documento no es v\u00E1lido como comprobante fiscal.",M,y);
+    pdf.setFillColor(227,242,253);pdf.rect(0,285,W,12,"F");
+    pdf.setFontSize(7);pdf.setFont("helvetica","normal");pdf.setTextColor(74,96,128);
+    pdf.text("IZARRA - Distribuidor Oficial CIMES - Documento no v\u00E1lido como factura",W/2,291,{align:"center"});
+    var blob=pdf.output("blob");
+    var fn="DocX_"+c.name.replace(/[^a-zA-Z0-9]/g,"_").substring(0,20)+"_"+desde+".pdf";
+    var file=new File([blob],fn,{type:"application/pdf"});
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      try{var msg="Documento IZARRA\n"+c.name+"\nPer\u00EDodo: "+desde.split("-").reverse().join("/")+" al "+hasta.split("-").reverse().join("/")+"\nTotal: "+fmt(tot)+"\n\nIZARRA - Distribuidor Oficial CIMES";
+        await navigator.share({title:"Doc X IZARRA - "+c.name,text:msg,files:[file]});toast("PDF compartido","ok");return;}catch(e){}
+    }
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download=fn;a.click();
+    URL.revokeObjectURL(url);toast("PDF descargado","ok");
+  }catch(er){console.error(er);toast("Error PDF","err");}
+}
+function envDocXWA(cid){
+  var c=CLIENTES.find(function(x){return x.id===cid;});
+  var desde=g("dxDesde").value,hasta=g("dxHasta").value;
+  var rows=ents.filter(function(e){return e.cid===cid&&!e.anulado&&e.fechaISO>=desde&&e.fechaISO<=hasta;});
+  var tot=rows.reduce(function(s,e){return s+e.total;},0);
+  var m="DOCUMENTO NO VALIDO COMO FACTURA\nIZARRA\nPer\u00EDodo: "+desde.split("-").reverse().join("/")+" al "+hasta.split("-").reverse().join("/")+"\n\nCliente: "+c.name+"\n\nRemitos:\n";
+  rows.forEach(function(e){m+=e.remito+" | "+e.prod+" | "+fmt(e.total)+"\n";});
+  m+="\nTOTAL A COBRAR: "+fmt(tot)+"\n\nIZARRA - Distribuidor Oficial CIMES";
+  var phone=(c.phone||"").replace(/[^0-9]/g,"");
+  window.open("https://wa.me/"+(phone?"54"+phone:"")+"?text="+encodeURIComponent(m),"_blank");
+}
+
+// \u2500\u2500 HISTORIAL \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+document.querySelectorAll("#chipsHist .chip").forEach(function(c){
+  c.addEventListener("click",function(){
+    document.querySelectorAll("#chipsHist .chip").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");hfilt=this.dataset.h;renderHist();
+  });
+});
+g("btnExpCSV").addEventListener("click",expCSV);
+function renderHist(){
+  var now=new Date(),w0=new Date(now);w0.setDate(now.getDate()-now.getDay());
+  var filt=ents.filter(function(e){
+    if(e.anulado)return false;
+    if(hfilt==="hoy")return e.fechaISO===TODAY;
+    if(hfilt==="semana")return new Date(e.fechaISO)>=w0;
+    if(hfilt==="mes")return e.mes===TODAY.substr(0,7);
+    return true;
+  }).slice().sort(function(a,b){return b.fechaISO.localeCompare(a.fechaISO);});
+  var tV=filt.reduce(function(s,e){return s+e.total;},0);
+  var tG=filt.reduce(function(s,e){return s+e.gan;},0);
+  var tU=filt.reduce(function(s,e){return s+e.llenos;},0);
+  g("histStats").innerHTML=
+    "<div class=\"stat stat-b\"><div class=\"stat-val\">"+fmtShort(tV)+"</div><div class=\"stat-lbl\">VENTA</div></div>"
+    +"<div class=\"stat stat-gn\"><div class=\"stat-val\">"+fmtShort(tG)+"</div><div class=\"stat-lbl\">GANANCIA</div></div>"
+    +"<div class=\"stat stat-rd\"><div class=\"stat-val\">"+tU+"</div><div class=\"stat-lbl\">UNIDADES</div></div>"
+    +"<div class=\"stat stat-yw\"><div class=\"stat-val\">"+filt.length+"</div><div class=\"stat-lbl\">REMITOS</div></div>";
+  g("listaHist").innerHTML=filt.length?filt.map(function(e){
+    return "<div class=\"list-item\">"
+      +"<div><div class=\"li-name\">"+e.cname+"</div>"
+      +"<div class=\"li-sub\">"+e.fecha+" \u2014 "+e.prod+" \u2014 Chofer: "+(e.chofer||"---")+"</div>"
+      +"<div style=\"font-size:11px;color:var(--t3);font-family:monospace\">"+e.remito+"</div></div>"
+      +"<div style=\"font-family:monospace;font-weight:700;font-size:14px;color:var(--b)\">"+fmt(e.total)+"</div></div>";
+  }).join(""):"<div class=\"empty\"><div class=\"empty-icon\">\u1F4CA</div><div>Sin entregas</div></div>";
+}
+
+// \u2500\u2500 CIMES \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var PRECIOS_CIMES={b20env:12500,b20ll:2100,b12env:0,b12ll:0,b12bsenv:0,b12bsll:0,sif:1700};
+document.querySelectorAll("[data-cimes]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll("[data-cimes]").forEach(function(b){b.classList.remove("on");});
+    this.classList.add("on");
+    g("cimesVisita").style.display=this.dataset.cimes==="visita"?"block":"none";
+    g("cimesCompra").style.display=this.dataset.cimes==="compra"?"block":"none";
+    g("cimesResumen").style.display=this.dataset.cimes==="resumen"?"block":"none";
+    if(this.dataset.cimes==="resumen")renderCimesResumen();
+  });
+});
+g("btnGuardarVisita").addEventListener("click",function(){
+  var v={id:Date.now(),fecha:g("cimesVFecha").value,remito:g("cimesVRemito").value,
+    vacB20:parseInt(g("cvB20").value)||0,vacB12:parseInt(g("cvB12").value)||0,vacB12bs:parseInt(g("cvB12bs").value)||0,
+    retB20:parseInt(g("crB20").value)||0,retB12:parseInt(g("crB12").value)||0,retB12bs:parseInt(g("crB12bs").value)||0,retSif:parseInt(g("crSif").value)||0};
+  cimesVisitas.push(v);saveAll();
+  toast("Visita guardada","ok");
+  renderCimesResumen();
+});
+g("btnGuardarCompra").addEventListener("click",function(){
+  var comp={id:Date.now(),fecha:g("ccFecha").value,remito:g("ccRemito").value,tipo:g("ccTipo").value,
+    envB20:parseInt(g("ceB20").value)||0,envB12:parseInt(g("ceB12").value)||0,envB12bs:parseInt(g("ceB12bs").value)||0,envSif:parseInt(g("ceSif").value)||0,
+    llB20:parseInt(g("clB20").value)||0,llB12:parseInt(g("clB12").value)||0,llB12bs:parseInt(g("clB12bs").value)||0};
+  comp.total=comp.envB20*PRECIOS_CIMES.b20env+comp.llB20*PRECIOS_CIMES.b20ll+comp.envSif*PRECIOS_CIMES.sif;
+  cimesCompras.push(comp);saveAll();
+  toast("Compra guardada","ok");
+  renderCimesResumen();
+});
+// Calcular total compra en tiempo real
+["ceB20","ceB12","ceB12bs","ceSif","clB20","clB12","clB12bs"].forEach(function(id){
+  var el=g(id);if(el)el.addEventListener("input",function(){
+    var b20e=(parseInt(g("ceB20").value)||0)*PRECIOS_CIMES.b20env;
+    var b20l=(parseInt(g("clB20").value)||0)*PRECIOS_CIMES.b20ll;
+    var sif=(parseInt(g("ceSif").value)||0)*PRECIOS_CIMES.sif;
+    g("ccTotal").textContent=fmt(b20e+b20l+sif);
+  });
+});
+function renderCimesResumen(){
+  var totEnvB20=cimesCompras.reduce(function(s,c){return s+c.envB20;},0);
+  var totLlB20=cimesCompras.reduce(function(s,c){return s+c.llB20;},0);
+  var totSif=cimesCompras.reduce(function(s,c){return s+c.envSif;},0);
+  var totPago=cimesCompras.reduce(function(s,c){return s+c.total;},0);
+  var totVacB20=cimesVisitas.reduce(function(s,v){return s+v.vacB20;},0);
+  var totRetB20=cimesVisitas.reduce(function(s,v){return s+v.retB20;},0);
+  var html="<div class=\"stats\">";
+  html+="<div class=\"stat stat-b\"><div class=\"stat-val\">"+totEnvB20+"</div><div class=\"stat-lbl\">ENVASES B20 COMPRADOS</div></div>";
+  html+="<div class=\"stat stat-gn\"><div class=\"stat-val\">"+totLlB20+"</div><div class=\"stat-lbl\">LLENADOS B20</div></div>";
+  html+="<div class=\"stat stat-pr\"><div class=\"stat-val\">"+totSif+"</div><div class=\"stat-lbl\">SIFONES</div></div>";
+  html+="<div class=\"stat stat-rd\"><div class=\"stat-val\">"+fmtShort(totPago)+"</div><div class=\"stat-lbl\">TOTAL PAGADO</div></div></div>";
+  html+="<div class=\"card\"><div class=\"card-title\">Visitas recientes</div>";
+  if(cimesVisitas.length){
+    cimesVisitas.slice(-5).reverse().forEach(function(v){
+      html+="<div style=\"padding:8px 0;border-bottom:1px solid var(--br)\">"
+        +"<div style=\"font-weight:700\">"+v.fecha+" \u2014 "+( v.remito||"Sin remito")+"</div>"
+        +"<div style=\"font-size:12px;color:var(--t2);margin-top:2px\">Vacios: B20="+v.vacB20+" B12="+v.vacB12+" | Llenos: B20="+v.retB20+" B12="+v.retB12+"</div></div>";
+    });
+  }else html+="<div class=\"empty\" style=\"padding:16px\">Sin visitas registradas</div>";
+  html+="</div>";
+  g("cimesResContent").innerHTML=html;
+}
+
+// \u2500\u2500 TOAST \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+// \u2500\u2500 TAB CLIENTES \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+g("sbCli").addEventListener("input", renderTabClientes);
+function renderTabClientes(){
+  var q=g("sbCli").value.trim().toLowerCase();
+  var filt=CLIENTES.filter(function(c){
+    return !q||c.name.toLowerCase().indexOf(q)>=0||String(c.id).indexOf(q)>=0;
+  });
+  g("listaCliTabla").innerHTML=filt.map(function(c){
+    var venta=getVentaCliente(c.id);
+    var pagado=getCobroCliente(c.id);
+    var saldo=venta-pagado;
+    var tag=venta>0?(saldo<=0?"<span class=\"tag tag-ok\">Al d\u00EDa</span>":"<span class=\"tag tag-debe\">Debe "+fmt(saldo)+"</span>"):"";
+    return "<div class=\"card\" style=\"margin-bottom:8px\">"
+      +"<div style=\"display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px\">"
+      +"<div><div style=\"font-weight:800;font-size:15px\">"+c.name+"</div>"
+      +"<span class=\"li-badge "+CF_TAG[c.cf]+"\">"+CF_L[c.cf]+"</span></div>"
+      +"<div style=\"font-weight:800;font-size:13px;color:var(--b)\">N\u00B0"+c.id+"</div></div>"
+      +"<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px;margin-bottom:8px\">"
+      +(c.phone?"<div><span style=\"color:var(--t2)\">Tel: </span><a href=\"tel:+54"+c.phone+"\">"+c.phone+"</a></div>":"<div></div>")
+      +(c.email?"<div style=\"overflow:hidden;text-overflow:ellipsis\"><span style=\"color:var(--t2)\">Email: </span>"+c.email+"</div>":"<div></div>")
+      +(c.cuit?"<div><span style=\"color:var(--t2)\">CUIT: </span>"+c.cuit+"</div>":"<div></div>")
+      +"<div><span style=\"color:var(--t2)\">B20: </span><b>"+fmt(c.p20)+"</b></div>"
+      +"<div><span style=\"color:var(--t2)\">B12: </span><b>"+fmt(c.p12)+"</b></div>"
+      +"<div><span style=\"color:var(--t2)\">B12BS: </span><b>"+fmt(c.p12bs)+"</b></div>"
+      +"</div>"
+      +(venta>0?"<div style=\"display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg);border-radius:8px\">"
+        +"<div><div style=\"font-size:11px;color:var(--t2)\">Facturado: "+fmt(venta)+"  Cobrado: "+fmt(pagado)+"</div></div>"+tag+"</div>":"")
+      +"</div>";
+  }).join("");
+}
+
+function toast(msg,type){
+  var t=g("toast");t.textContent=msg;t.className="toast "+(type||"");
+  t.classList.add("on");setTimeout(function(){t.classList.remove("on");},2800);
+}
+
+// DATOS PRECARGADOS DESDE LA PLANILLA
+(function(){
+  localStorage.setItem("iz_ents", JSON.stringify([{"id": 3000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 17, "cname": "MARIA BELEN MAIORANA (CREARTEC ARG. SRL)", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "1x Bidon 20 lt", "llenos": 1, "vacios": 1, "subtotal": 9000.0, "base": 7438.0, "iva": 1562.0, "total": 9000.0, "costo": 1800.0, "gan": 7200.0, "pago": "Cta Cte", "remito": "REM-00000301", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 4000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 17, "cname": "MARIA BELEN MAIORANA (CREARTEC ARG. SRL)", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "3x Bidon 20 lt", "llenos": 3, "vacios": 3, "subtotal": 27000.0, "base": 22314.0, "iva": 4686.0, "total": 27000.0, "costo": 5400.0, "gan": 21600.0, "pago": "Cta Cte", "remito": "REM-00000302", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 5000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 12, "cname": "KARINA ROSSI", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "1x Bidon 20 lt", "llenos": 1, "vacios": 0, "subtotal": 7500.0, "base": 7500.0, "iva": 0, "total": 7500.0, "costo": 1800.0, "gan": 5700.0, "pago": "Cta Cte", "remito": "REM-00000303", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 6000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 16, "cname": "MABEL NICORA", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "2x Bidon 20 lt", "llenos": 2, "vacios": 2, "subtotal": 15000.0, "base": 15000.0, "iva": 0, "total": 15000.0, "costo": 3600.0, "gan": 11400.0, "pago": "Cta Cte", "remito": "REM-00000305", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 7000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 29, "cname": "YAMILA MATULAITIS", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "1x Bidon 20 lt", "llenos": 1, "vacios": 2, "subtotal": 9000.0, "base": 9000.0, "iva": 0, "total": 9000.0, "costo": 1800.0, "gan": 7200.0, "pago": "Cta Cte", "remito": "REM-00000306", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 8000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 18, "cname": "MARIANA DEL CAMPO", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "1x Bidon 20 lt", "llenos": 1, "vacios": 1, "subtotal": 9000.0, "base": 9000.0, "iva": 0, "total": 9000.0, "costo": 1800.0, "gan": 7200.0, "pago": "Cta Cte", "remito": "REM-00000307", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 9000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 14, "cname": "LILIANA ALCARAZ", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "2x Bidon 20 lt", "llenos": 2, "vacios": 1, "subtotal": 18000.0, "base": 18000.0, "iva": 0, "total": 18000.0, "costo": 3600.0, "gan": 14400.0, "pago": "Cta Cte", "remito": "REM-00000309", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 10000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 10, "cname": "GUSTAVO GIUDICE", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "4x Bidon 20 lt", "llenos": 4, "vacios": 4, "subtotal": 36000.0, "base": 36000.0, "iva": 0, "total": 36000.0, "costo": 7200.0, "gan": 28800.0, "pago": "Cta Cte", "remito": "REM-00000310", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 11000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 10, "cname": "GUSTAVO GIUDICE", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "4x Bidon 12 lt", "llenos": 4, "vacios": 4, "subtotal": 28000.0, "base": 28000.0, "iva": 0, "total": 28000.0, "costo": 7200.0, "gan": 20800.0, "pago": "Cta Cte", "remito": "REM-00000312", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 12000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 7, "cname": "CHIARA BAVIO", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "2x Bidon 12 lt BS", "llenos": 2, "vacios": 1, "subtotal": 15000.0, "base": 15000.0, "iva": 0, "total": 15000.0, "costo": 3600.0, "gan": 11400.0, "pago": "Cta Cte", "remito": "REM-00000313", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 13000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 8, "cname": "FERNANDO TORRES GILIBERTI", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "4x Bidon 20 lt", "llenos": 4, "vacios": 4, "subtotal": 36000.0, "base": 36000.0, "iva": 0, "total": 36000.0, "costo": 7200.0, "gan": 28800.0, "pago": "Cta Cte", "remito": "REM-00000314", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 14000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 15, "cname": "LIT 58 SRL", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "8x Bidon 20 lt | 1x Bidon 12 lt", "llenos": 9, "vacios": 6, "subtotal": 67000.0, "base": 55372.0, "iva": 11628.0, "total": 67000.0, "costo": 16200.0, "gan": 50800.0, "pago": "Cta Cte", "remito": "REM-00000315", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 15000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 27, "cname": "VADILLO PROPIEDADES - FLORENCIA VADILLO", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "2x Bidon 12 lt BS", "llenos": 2, "vacios": 2, "subtotal": 15000.0, "base": 15000.0, "iva": 0, "total": 15000.0, "costo": 3600.0, "gan": 11400.0, "pago": "Cta Cte", "remito": "REM-00000317", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 16000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 28, "cname": "VERONICA INES DE LA ROSA", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "8x Bidon 12 lt BS", "llenos": 8, "vacios": 9, "subtotal": 60000.0, "base": 60000.0, "iva": 0, "total": 60000.0, "costo": 14400.0, "gan": 45600.0, "pago": "Cta Cte", "remito": "REM-00000318", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 17000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 2, "cname": "BANCO DE LA PROVINCIA DE BUENOS AIRES PLAZA LANUS", "condFisc": "Exento", "tipoFC": "FC B", "prod": "10x Bidon 20 lt", "llenos": 10, "vacios": 8, "subtotal": 75000.0, "base": 75000.0, "iva": 0, "total": 75000.0, "costo": 18000.0, "gan": 57000.0, "pago": "Cta Cte", "remito": "REM-00000319", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 18000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 3, "cname": "BANCO PROVINCIA BUENOS AIRES - ANEXO JUDICIAL", "condFisc": "Exento", "tipoFC": "FC B", "prod": "2x Bidon 20 lt", "llenos": 2, "vacios": 1, "subtotal": 15000.0, "base": 15000.0, "iva": 0, "total": 15000.0, "costo": 3600.0, "gan": 11400.0, "pago": "Cta Cte", "remito": "REM-00000320", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 19000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 11, "cname": "INSUMOS MAGNA SRL", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "9x Bidon 20 lt", "llenos": 9, "vacios": 9, "subtotal": 67500.0, "base": 55785.0, "iva": 11715.0, "total": 67500.0, "costo": 16200.0, "gan": 51300.0, "pago": "Cta Cte", "remito": "REM-00000321", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 20000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 5, "cname": "CARLOS MOLANES (MOLANES S.A.)", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "8x Bidon 20 lt", "llenos": 8, "vacios": 10, "subtotal": 60000.0, "base": 49587.0, "iva": 10413.0, "total": 60000.0, "costo": 14400.0, "gan": 45600.0, "pago": "Cta Cte", "remito": "REM-00000322", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 21000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 6, "cname": "CARRILLO MAXIMILIANO ARIEL", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "14x Bidon 20 lt", "llenos": 14, "vacios": 9, "subtotal": 105000.0, "base": 86777.0, "iva": 18223.0, "total": 105000.0, "costo": 25200.0, "gan": 79800.0, "pago": "Cta Cte", "remito": "REM-00000323", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 22000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 1, "cname": "ALVAGAMA SA - EVA PERON 1700 GBA", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "21x Bidon 20 lt", "llenos": 21, "vacios": 18, "subtotal": 157500.0, "base": 130165.0, "iva": 27335.0, "total": 157500.0, "costo": 37800.0, "gan": 119700.0, "pago": "Cta Cte", "remito": "REM-00000324", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 23000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 4, "cname": "BANCO PROVINCIA DE BUENOS AIRES - EL PATO", "condFisc": "Exento", "tipoFC": "FC B", "prod": "12x Bidon 20 lt", "llenos": 12, "vacios": 18, "subtotal": 90000.0, "base": 90000.0, "iva": 0, "total": 90000.0, "costo": 21600.0, "gan": 68400.0, "pago": "Cta Cte", "remito": "REM-00000326", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 24000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 22, "cname": "PABLO ARAKAKI - DELEGACION BCO PROVINCIA EL PATO", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "2x Bidon 20 lt", "llenos": 2, "vacios": 0, "subtotal": 18000.0, "base": 18000.0, "iva": 0, "total": 18000.0, "costo": 3600.0, "gan": 14400.0, "pago": "Cta Cte", "remito": "REM-00000327", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 25000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 24, "cname": "SANTIAGO LLADO", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "3x Bidon 20 lt", "llenos": 3, "vacios": 3, "subtotal": 27000.0, "base": 27000.0, "iva": 0, "total": 27000.0, "costo": 5400.0, "gan": 21600.0, "pago": "Cta Cte", "remito": "REM-00000328", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 26000000, "fecha": "29/05/2026", "fechaISO": "2026-05-29", "mes": "2026-05", "semana": "Sem 22", "cid": 25, "cname": "TECNO AGRO VIAL S.A.", "condFisc": "Responsable Inscripto", "tipoFC": "FC A", "prod": "44x Bidon 20 lt", "llenos": 44, "vacios": 17, "subtotal": 242000.0, "base": 200000.0, "iva": 42000.0, "total": 242000.0, "costo": 79200.0, "gan": 162800.0, "pago": "Cta Cte", "remito": "REM-00000330", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 27000000, "fecha": "30/05/2026", "fechaISO": "2026-05-30", "mes": "2026-05", "semana": "Sem 23", "cid": 29, "cname": "YAMILA MATULAITIS", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "2x Bidon 12 lt", "llenos": 2, "vacios": 0, "subtotal": 14000.0, "base": 14000.0, "iva": 0, "total": 14000.0, "costo": 3600.0, "gan": 10400.0, "pago": "Cta Cte", "remito": "REM-00000301", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}, {"id": 28000000, "fecha": "30/05/2026", "fechaISO": "2026-05-30", "mes": "2026-05", "semana": "Sem 23", "cid": 18, "cname": "MARIANA DEL CAMPO", "condFisc": "Consumidor Final", "tipoFC": "FC X", "prod": "1x Bidon 20 lt", "llenos": 1, "vacios": 1, "subtotal": 9000.0, "base": 9000.0, "iva": 0, "total": 9000.0, "costo": 1800.0, "gan": 7200.0, "pago": "Cta Cte", "remito": "REM-00000304", "obs": "", "chofer": "", "anulado": false, "vacStr": ""}]));
+  localStorage.setItem("iz_cobros", JSON.stringify([{"id": 1001, "fecha": "29/05/2026", "cid": 8, "cname": "FERNANDO TORRES GILIBERTI", "nRecibo": "REC-00001", "monto": 100000, "forma": "Transferencia", "ref": ""}, {"id": 1002, "fecha": "29/05/2026", "cid": 25, "cname": "TECNO AGRO VIAL S.A.", "nRecibo": "REC-00002", "monto": 91443.07, "forma": "Transferencia", "ref": ""}, {"id": 1003, "fecha": "29/05/2026", "cid": 28, "cname": "VERONICA INES DE LA ROSA", "nRecibo": "REC-00003", "monto": 60000, "forma": "Transferencia", "ref": ""}]));
+  if(!localStorage.getItem("iz_rn")) localStorage.setItem("iz_rn","330");
+})();
+</script>
+</body></html>
